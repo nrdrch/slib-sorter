@@ -2,7 +2,7 @@
     "Top Bar": "<   Sample Library Sorter   >",
     "Prompt": "$ ",
     "Console Log Seperator": "  >>>--<>  ",
-    "Show More Console Logs": true,
+    "Show More Console Logs": false,
     "Show Seperator": true,
     "Show Top Bar": true,
     "Show Statistics": true,
