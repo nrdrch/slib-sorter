@@ -51,4 +51,5 @@ function sorter {
 
 ### Future additions
 - [ ] Make any used path easier configurable by the user.
-- [ ] Apply somewhat simple AI to further boost accuracy, including sorting not based on names but sound. 
+- [ ] Fix minor issues regarding time.
+- [ ] Apply somewhat simple AI to further boost accuracy, including sorting not based on names but sound.
