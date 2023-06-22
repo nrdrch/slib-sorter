@@ -515,7 +515,7 @@ def sort_files(file_path, pattern_lists):
                     total += 1
                     num_failed += 1
                     if settings.get("Show More Console Logs", True):
-                        fsf.log_message(f'{file_name}', "yellow", False, False)
+                        fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
                         pass
             elif file_extension in ["nki"]:
@@ -656,7 +656,7 @@ def sort_files(file_path, pattern_lists):
                     total += 1
                     num_failed += 1
                     if settings.get("Show More Console Logs", True):
-                        fsf.log_message(f'{file_name}', "yellow", False, False)
+                        fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
                         pass
             elif file_extension in ["nmsv"]:
@@ -753,10 +753,10 @@ def sort_files(file_path, pattern_lists):
                     total += 1
                     num_succeeded += 1
                     if settings.get("Show More Console Logs", True):
-                        fsf.log_message(f'{file_name}', "yellow", False, False)
+                        fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
                         pass
-                    num_failed += 1
+                        num_failed += 1
             elif file_extension in plugin_exts:
                 total += 1
                 num_succeeded += 1
