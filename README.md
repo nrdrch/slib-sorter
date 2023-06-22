@@ -45,6 +45,6 @@ $home\Documents\slib-sorter\settings.json
 # example function 
 # Change the name to your prefered alias for easier execution.
 function sorter {
-    python3 C:\Users\nrdrch\Documents\slib-sorter\src\slib-sorter.py
+    python3 $HOME\Documents\slib-sorter\src\slib-sorter.py
 }
 ```
