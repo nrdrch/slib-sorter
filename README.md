@@ -1,5 +1,5 @@
 # Sample Library Sorter
-
+> for now only meant to run on Windows10
 
 ### Dependecies
 #### 
