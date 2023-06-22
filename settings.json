@@ -1,12 +1,12 @@
 {
-    "Top Bar": "<   Mlib. Sorter   >",
+    "Top Bar": "<   Sample Library Sorter   >",
     "Prompt": "$ ",
     "Console Log Seperator": "  >>>--<>  ",
     "Show More Console Logs": false,
-    "Show Sepeator": true,
+    "Show Top Bar": false,
     "Show Statistics": true,
     "To Be Processed Directory": "Unsorted",
-    "Name Of Top Library Directory": "Music Library",
+    "Name Of Top Library Directory": "Sample Library",
     "Rejected Files": "Rejected Files",
     "Run Shell Command On Startup": true, 
     "Command On Startup": "cls"
