@@ -36,4 +36,4 @@ jobs:
       uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
       with:
         user: nrdrch
-        password: ${{ pypi-AgEIcHlwaS5vcmcCJGJiYTBlYzQ4LTNjZjYtNDdmYi04NzI2LTBiMTVjZjM0M2YwZAACKlszLCIzMDZlMTg1YS0zMTFmLTQwOTQtYWIyMi01MTc2YjA5NDUyYTAiXQAABiBpEpc0m2JH-cPM97ibWmJjHMb0h7v6SE6ayy9EB2UVeA }}
+        password: ${{ secret.API }}
