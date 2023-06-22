@@ -38,9 +38,10 @@ $home\Documents\slib-sorter\settings.json
 
 
 ### Suggestions
-- Create a function in - or imported into your $PSPROFILE for easier Execution.
+- Create a function in - or imported into your $PROFILE for easier Execution.
 
 ```
+# $HOME\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
 # example function 
 # Change the name to your prefered alias for easier execution.
 function sorter {
