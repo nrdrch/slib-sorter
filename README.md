@@ -23,12 +23,25 @@ python3 $home\Documents\slib-sorter\src\slib-sorter.py
 <img alt="" src="https://raw.githubusercontent.com/nrdrch/slib-sorter/main/examples/direxample.png?token=GHSAT0AAAAAACCUPKWOJF3EUJNKTAR7NJSSZEUEOLA">
 
 
-#### Note: Among other things, the names of these two directories & the name of the finished library can be changed in the settings.json file. 
-
-
-<img alt="" src="https://raw.githubusercontent.com/nrdrch/slib-sorter/main/examples/settings.png?token=GHSAT0AAAAAACCUPKWOI2DEHVEBXZM4Y23EZEUEP5A">
+#### Note: Among other things, the names of these two directories & the name of the finished library can be changed in the settings file. 
+```
+$home\Documents\slib-sorter\settings.json
+```
+<img alt="" src="https://raw.githubusercontent.com/nrdrch/slib-sorter/main/examples/settings.png?token=GHSAT0AAAAAACCUPKWP6PAP5GP6BWXX4ZJ6ZEUECZA">
 
 
 2. Move all your files into the 'To Be Sorted' directory
 3. Run the same command again and wait for the process to be completed 
 4. Inspect the newly created Sample Library located under 'Documents\Sample Library' folder.
+
+
+### Suggestions
+- Create a function in - or imported into your $PSPROFILE for easier Execution.
+
+```
+# example function 
+# Change the name to your prefered alias for easier execution.
+function libsort {
+    python3 C:\Users\nrdrch\Documents\slib-sorter\src\slib-sorter.py
+}
+```
