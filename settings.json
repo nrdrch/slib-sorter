@@ -3,6 +3,7 @@
     "Prompt": "$ ",
     "Console Log Seperator": "  >>>--<>  ",
     "Show More Console Logs": true,
+    "Show Seperator": true,
     "Show Top Bar": true,
     "Show Statistics": true,
     "To Be Processed Directory": "To Be Sorted",
