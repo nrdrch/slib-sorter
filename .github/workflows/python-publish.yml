@@ -51,15 +51,15 @@ jobs:
       uses: pypa/gh-action-pypi-publish@v1.8.6
       with:
     # PyPI user
-        user: __token__
+        user: https://nrdrch:password@pypi.company.com/simple
         # Password for your PyPI user or an access token
-        password: pypi-AgEIcHlwaS5vcmcCJGJiYTBlYzQ4LTNjZjYtNDdmYi04NzI2LTBiMTVjZjM0M2YwZAACKlszLCIzMDZlMTg1YS0zMTFmLTQwOTQtYWIyMi01MTc2YjA5NDUyYTAiXQAABiBpEpc0m2JH-cPM97ibWmJjHMb0h7v6SE6ayy9EB2UVeA
+        #password: pypi-AgEIcHlwaS5vcmcCJGJiYTBlYzQ4LTNjZjYtNDdmYi04NzI2LTBiMTVjZjM0M2YwZAACKlszLCIzMDZlMTg1YS0zMTFmLTQwOTQtYWIyMi01MTc2YjA5NDUyYTAiXQAABiBpEpc0m2JH-cPM97ibWmJjHMb0h7v6SE6ayy9EB2UVeA
         # The repository URL to use
         #repository-url: # optional
         # [DEPRECATED] The repository URL to use
-        #repository_url: # optional, default is https://upload.pypi.org/legacy/
+        repository_url: https://upload.pypi.org/legacy/
         # The target directory for distribution
-       #packages-dir: # optional
+       packages-dir: src
        ## [DEPRECATED] The target directory for distribution
        #packages_dir: # optional, default is dist
        ## Check metadata before uploading
