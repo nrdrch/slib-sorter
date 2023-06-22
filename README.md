@@ -48,5 +48,7 @@ function sorter {
     python3 $HOME\Documents\slib-sorter\src\slib-sorter.py
 }
 ```
+
+### Future additions
 - [ ] Continue to work on the sorting itself 
 - [ ] Apply somewhat simple AI to further boost accuracy, including sorting not based on names but sound. 
