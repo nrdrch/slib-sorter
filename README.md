@@ -21,7 +21,7 @@ python3 $home\Documents\slib-sorter\src\slib-sorter.py
 
 
 <img src="https://raw.githubusercontent.com/nrdrch/slib-sorter/main/examples/direxample.png?token=GHSAT0AAAAAACCUPKWOJF3EUJNKTAR7NJSSZEUEOLA">
-
+<img examples/direxample.png>
 
 #### Note: Among other things, the names of these two directories & the name of the finished library can be changed in the settings file. 
 ```
