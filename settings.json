@@ -3,7 +3,7 @@
     "Prompt": "$ ",
     "Console Log Seperator": "  >>>--<>  ",
     "Show More Console Logs": false,
-    "Show Top Bar": false,
+    "Show Top Bar": true,
     "Show Statistics": true,
     "To Be Processed Directory": "Unsorted",
     "Name Of Top Library Directory": "Sample Library",
