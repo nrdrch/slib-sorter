@@ -28,6 +28,7 @@ python3 $home\Documents\slib-sorter\src\slib-sorter.py
 $home\Documents\slib-sorter\settings.json
 ```
 
+
 <img alt="" src="https://raw.githubusercontent.com/nrdrch/slib-sorter/main/examples/settings.png?token=GHSAT0AAAAAACCUPKWP6PAP5GP6BWXX4ZJ6ZEUECZA">
 
 
