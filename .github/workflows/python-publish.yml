@@ -32,11 +32,12 @@ jobs:
         pip install build
     - name: Build package
       run: python -m build
+
+      run: 
     - name: PyInstaller Windows
       # You may pin to the exact commit or the version.
       uses: JackMcKew/pyinstaller-action-windows@a8dee21ad01bbc7e7363d445bb632691b95ba057
       #uses: JackMcKew/pyinstaller-action-windows@v0.1.2
-      with:
     # Directory containing source code (optional requirements.txt).
         path: src
     # Specify a custom URL for PYPI
@@ -46,14 +47,15 @@ jobs:
     # Specify a file path for .spec file
         #spec: optional, default is 
     - name: pypi-publish
+      run: 
   # You may pin to the exact commit or the version.
   # uses: pypa/gh-action-pypi-publish@a56da0b891b3dc519c7ee3284aff1fad93cc8598
       uses: pypa/gh-action-pypi-publish@v1.8.6
-      with:
+      with: twine upload -r testpypi dist/*
     # PyPI user
-        user: https://nrdrch:password@pypi.company.com/simple
+        user: __token__
         # Password for your PyPI user or an access token
-        #password: pypi-AgEIcHlwaS5vcmcCJGJiYTBlYzQ4LTNjZjYtNDdmYi04NzI2LTBiMTVjZjM0M2YwZAACKlszLCIzMDZlMTg1YS0zMTFmLTQwOTQtYWIyMi01MTc2YjA5NDUyYTAiXQAABiBpEpc0m2JH-cPM97ibWmJjHMb0h7v6SE6ayy9EB2UVeA
+        password:   password = pypi-AgEIcHlwaS5vcmcCJDFjMGE2MWNiLWVmOTUtNGEzYy04MzM3LTlmZmVlMzcxNTNjMwACKlszLCIzMDZlMTg1YS0zMTFmLTQwOTQtYWIyMi01MTc2YjA5NDUyYTAiXQAABiBhkE_8JgnGpB8USF2rGuyBeFU1OgYjh1MYRs0qmISvPw
         # The repository URL to use
         #repository-url: # optional
         # [DEPRECATED] The repository URL to use
@@ -76,4 +78,4 @@ jobs:
        #print-hash: # optional
        ## [DEPRECATED] Show hash values of files to be uploaded
        #print_hash: # optional, default is false   
-    
+       twine upload -r testpypi dist/*
