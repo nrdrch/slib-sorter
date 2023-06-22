@@ -19,7 +19,6 @@ python3 $home\Documents\slib-sorter\src\slib-sorter.py
 ```
 > If its the first time running this, it will now have created two directories on your desktop.
 
-
 <img src="https://raw.githubusercontent.com/nrdrch/slib-sorter/main/examples/direxample.png?token=GHSAT0AAAAAACCUPKWOJF3EUJNKTAR7NJSSZEUEOLA">
 <img examples/direxample.png>
 
