@@ -1,7 +1,7 @@
 # Sample Library Sorter
 ###### *for now only meant to run on Windows10
 > This script allows you to quickly sort a massive amount of files, any kind you might find in your Sample Library as a Music Producer.
-> Audio, Project Files & Presets (for now just Serum and Massive)
+> Audio, Project Files & Plugin Presets (for now just Serum and Massive)
 ### Dependecies
 #### 
 [Python](https://www.python.org/downloads/), [termcolor 2.3.0 ](https://pypi.org/project/termcolor/)
