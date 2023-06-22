@@ -18,7 +18,7 @@ else:
 pattern_lists = {
     "Bass": ['bass', 'BS', 'BASS', 'Bass', 'sub', 'contrabass', 'BA', 'BS', 'Growl', 'GROWL', 'growl'],
     "BassLoops": ['bass_loop', 'bass_loops', 'Bass loops', 'D&B_Bass_Loop', 'Bass_Loop'],
-    "DrumLoops": ['DnB_Drum_Loop', '_DnB_Drum_Loop_', 'Drum_Loop', 'Drum Loops', 'Drum_Beat', 'drum_beat', 'drum_beats', 'fill', 'rundown', 'break', 'breaks', 'breakbeat', 'BREAK', 'Break', 'fills', 'Fills', 'FILLS', 'FILL', 'Fill', 'top', 'TOP', 'Top'],
+    "DrumLoops": ['DnB_Drum_Loop', '_DnB_Drum_Loop_', 'Drum_Loop', 'Drum Loops', 'Drum_Beat', 'drum_beat', 'drum_beats', 'fill', 'rundown', 'break', 'breaks', 'breakbeat', 'BREAK', 'Break', 'fills', 'Fills', 'FILLS', 'FILL', 'Fill', 'top loop', 'TOP loop', 'Top loop'],
     "BassHits": ['Bass_Hit', 'Bass_Hits', 'bass_hit', 'bass_hits'], 
     "Melodic": ['KEY', 'KEYS', 'Lead', 'Organ', 'organ', 'ORGAN', 'melodic', 'Melodic', 'MELODIC', 'Melody', 'Arp', 'arp', 'Arpeggio', 'arpeggio', 'ARP', 'Melody', 'melody', 'Melody', 'SEQ', 'seq', 'Bells', 'BELLS', 'Bell', 'bell', 'bells', 'Piano', 'piano', 'PIANO', 'Vibraphone', 'vibraphone'],
     "MelodicLoops": ['melodic_loop','cj_170_melodic_loop', 'MELODIC', 'Melody','Melody Loop', 'Arp', 'arp', 'melodic_loop', 'Arpeggio', 'String Loops', 'string loops' ],
