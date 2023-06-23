@@ -785,7 +785,7 @@ def sort_files(file_path, pattern_lists):
             if not os.path.exists(os.path.join(dest_path, filename)):
                 os.makedirs(dest_path, exist_ok="green")
                 shutil.move(file_path, dest_path)
-                total += 1
+                #total += 1
             else:
                 pass
     elapsed_time = time.time() - start_time
@@ -803,7 +803,8 @@ def sort_files(file_path, pattern_lists):
     fsf.check_if(path1)
     if settings.get("Show Top Bar", True):
         bar = settings.get("Top Bar")
-        fsf.log_message(bar, "dark_grey", True, True)
+        fsf.log_message(bar, f'{settings.get("Top Bar Color")}', True, True)
+        
     else:
         pass
     if settings.get("Show Statistics", True):
@@ -816,24 +817,24 @@ def sort_files(file_path, pattern_lists):
         fsf.log_message(prompt1, "dark_grey", False, False)
         fsf.log_message(f'rejected file types: ', "white", False, False)
         fsf.log_message(f' {num_failed2}', "red")
-        fsf.log_message(f'      {total}', "blue", False, False)
+        fsf.log_message(f'      {total}', f'{settings.get("Statistics Value Color")}', False, False)
         fsf.log_message(f' files processed in ', "dark_grey", False, False)
-        fsf.log_message(f'{elapsed_time:.2f}', "blue", False, False)
+        fsf.log_message(f'{elapsed_time:.2f}', f'{settings.get("Statistics Value Color")}', False, False)
         fsf.log_message(f' seconds', "dark_grey", False, True)
         maxfile = settings.get('Max files per Dir')
         fsf.split_files_in_subdirectories(path2, max_files_per_dir=maxfile)
         file_count, dir_count, total_size_mb, total_size_gb = fsf.count_files_in_directory(f'{path2}')
         fsf.log_message(f'          in ', "dark_grey", False, False)
-        fsf.log_message(f'{settings.get("Name Of Top Library Directory")}', "light_grey", False, True)
+        fsf.log_message(f'{settings.get("Name Of Top Library Directory")}', f'{settings.get("Statistics Value Color")}', False, True)
         fsf.log_message(f'              files', "dark_grey", False, False)
-        fsf.log_message(f' {file_count}', "blue", False, True)
+        fsf.log_message(f' {file_count}', f'{settings.get("Statistics Value Color")}', False, True)
         fsf.log_message(f'                  subdirectories', "dark_grey", False, False)
-        fsf.log_message(f' {dir_count}', "blue", False, True)
+        fsf.log_message(f' {dir_count}', f'{settings.get("Statistics Value Color")}', False, True)
         fsf.log_message(f'                      size', "dark_grey", False, False)
-        fsf.log_message(f' {total_size_mb:.2f}', "blue", False, False)
+        fsf.log_message(f' {total_size_mb:.2f}', f'{settings.get("Statistics Value Color")}', False, False)
         fsf.log_message(f' mb ', "light_grey", False, False)
         fsf.log_message(f'or ', "dark_grey", False, False)
-        fsf.log_message(f'{total_size_gb:.2f}', "blue", False, False)
+        fsf.log_message(f'{total_size_gb:.2f}', f'{settings.get("Statistics Value Color")}', False, False)
         fsf.log_message(f' gb', "light_grey", False, False)
     else:
         pass

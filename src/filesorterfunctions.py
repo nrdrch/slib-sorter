@@ -1,6 +1,7 @@
 import os, shutil, stat
 from termcolor import colored
 import json
+settings = os.path.join(os.environ['USERPROFILE'], 'Documents', 'slib-sorter', 'settings.json')
 def check_dir(*paths):
     for path in paths:
         if not os.path.exists(path):
@@ -21,7 +22,7 @@ def check_if(*paths):
     for path in paths:
         if not os.path.exists(path):
             os.makedirs(path)
-settings = os.path.join(os.environ['USERPROFILE'], 'Documents', 'slib-sorter', 'settings.json')
+
 
 with open(settings, 'r') as file:
     settings = json.load(file)
