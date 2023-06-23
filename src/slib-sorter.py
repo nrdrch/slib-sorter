@@ -795,7 +795,7 @@ def sort_files(file_path, pattern_lists):
         func(path)
     shutil.rmtree(path1, onerror=remove_readonly)
     fsf.check_if(path1)
-    fsf.split_files_in_subdirectories(path2, max_files_per_dir=50)
+    #fsf.split_files_in_subdirectories(path2, max_files_per_dir=50)
     def remove_readonly(func, path, _):
         os.chmod(path, stat.S_IWRITE)
         func(path)
@@ -820,7 +820,8 @@ def sort_files(file_path, pattern_lists):
         fsf.log_message(f' files processed in ', "dark_grey", False, False)
         fsf.log_message(f'{elapsed_time:.2f}', "blue", False, False)
         fsf.log_message(f' seconds', "dark_grey", False, True)
-        fsf.split_files_in_subdirectories(path2, max_files_per_dir=50)
+        maxfile = settings.get('Max files per Dir')
+        fsf.split_files_in_subdirectories(path2, max_files_per_dir=maxfile)
         file_count, dir_count, total_size_mb, total_size_gb = fsf.count_files_in_directory(f'{path2}')
         fsf.log_message(f'          in ', "dark_grey", False, False)
         fsf.log_message(f'{settings.get("Name Of Top Library Directory")}', "light_grey", False, True)
