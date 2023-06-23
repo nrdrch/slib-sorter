@@ -1,15 +1,17 @@
 {
+    "Show Top Bar": true,
     "Top Bar": "<   Sample Library Sorter   >",
+    "Top Bar Color": "dark_grey",
     "Prompt": "$ ",
     "Console Log Seperator": "  >>>--<>  ",
-    "Show More Console Logs": false,
+    "Show More Console Logs": true,
     "Show Seperator": true,
-    "Show Top Bar": true,
     "Show Statistics": true,
+    "Statistics Value Color": "light_cyan",
     "Max files per Dir": 50,
     "To Be Processed Directory": "To Be Sorted",
     "Name Of Top Library Directory": "Sample Library",
     "Rejected Files": "Rejected Files",
-    "Run Shell Command On Startup": true, 
+    "Run Shell Command On Startup": false, 
     "Command On Startup": "cls"
 }
