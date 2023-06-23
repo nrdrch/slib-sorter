@@ -6,6 +6,7 @@
     "Show Seperator": true,
     "Show Top Bar": true,
     "Show Statistics": true,
+    "Max files per Dir": 50,
     "To Be Processed Directory": "To Be Sorted",
     "Name Of Top Library Directory": "Sample Library",
     "Rejected Files": "Rejected Files",
