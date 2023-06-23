@@ -29,7 +29,7 @@ $home\Documents\slib-sorter\settings.json
 ```
 
 
-<img src="https://raw.githubusercontent.com/nrdrch/slib-sorter/main/examples/settings.png?token=GHSAT0AAAAAACCUPKWOI2DEHVEBXZM4Y23EZEUEP5A">
+<img src="https://raw.githubusercontent.com/nrdrch/slib-sorter/main/examples/settings.png">
 
 
 2. Move all your files into the 'To Be Sorted' directory
