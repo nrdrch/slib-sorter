@@ -4,7 +4,7 @@
     "Top Bar Color": "dark_grey",
     "Prompt": "$ ",
     "Console Log Seperator": "  >>>--<>  ",
-    "Show More Console Logs": true,
+    "Show More Console Logs": false,
     "Show Seperator": true,
     "Show Statistics": true,
     "Statistics Value Color": "light_cyan",
