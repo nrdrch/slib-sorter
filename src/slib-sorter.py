@@ -427,7 +427,7 @@ def sort_files(file_path, pattern_lists):
                 if any(pattern in file_name for pattern in pattern_lists.get("Bass", [])):
                     total += 1
                     num_succeeded += 1
-                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Serum Presets', 'Bass')
+                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Presets', 'Serum Presets', 'Bass')
                     if settings.get("Show More Console Logs", True):
                         fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
@@ -435,7 +435,7 @@ def sort_files(file_path, pattern_lists):
                 elif any(pattern in file_name for pattern in pattern_lists.get("Keys", [])):
                     total += 1
                     num_succeeded += 1
-                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Serum Presets', 'Keys')
+                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Presets', 'Serum Presets', 'Keys')
                     if settings.get("Show More Console Logs", True):
                         fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
@@ -443,7 +443,7 @@ def sort_files(file_path, pattern_lists):
                 elif any(pattern in file_name for pattern in pattern_lists.get("Plucks", [])):
                     total += 1
                     num_succeeded += 1
-                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Serum Presets', 'Plucks')
+                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Presets', 'Serum Presets', 'Plucks')
                     if settings.get("Show More Console Logs", True):
                         fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
@@ -451,7 +451,7 @@ def sort_files(file_path, pattern_lists):
                 elif any(pattern in file_name for pattern in pattern_lists.get("Lead", [])):
                     total += 1
                     num_succeeded += 1
-                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Serum Presets' ,'Lead')
+                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Presets', 'Serum Presets' ,'Lead')
                     if settings.get("Show More Console Logs", True):
                         fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
@@ -459,7 +459,7 @@ def sort_files(file_path, pattern_lists):
                 elif any(pattern in file_name for pattern in pattern_lists.get("Synth", [])):
                     total += 1
                     num_succeeded += 1
-                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Serum Presets' ,'Synth')
+                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Presets', 'Serum Presets' ,'Synth')
                     if settings.get("Show More Console Logs", True):
                         fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
@@ -467,7 +467,7 @@ def sort_files(file_path, pattern_lists):
                 elif any(pattern in file_name for pattern in pattern_lists.get("Pad", [])):
                     total += 1
                     num_succeeded += 1
-                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Serum Presets' ,'Pad')
+                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Presets', 'Serum Presets' ,'Pad')
                     if settings.get("Show More Console Logs", True):
                         fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
@@ -475,7 +475,7 @@ def sort_files(file_path, pattern_lists):
                 elif any(pattern in file_name for pattern in pattern_lists.get("FX", [])):
                     total += 1
                     num_succeeded += 1
-                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Serum Presets', 'FX')
+                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Presets', 'Serum Presets', 'FX')
                     if settings.get("Show More Console Logs", True):
                         fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
@@ -483,13 +483,13 @@ def sort_files(file_path, pattern_lists):
                 elif any(pattern in file_name for pattern in pattern_lists.get("Atmos", [])):
                     total += 1
                     num_succeeded += 1
-                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Serum Presets', 'Atmos')
+                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Presets', 'Serum Presets', 'Atmos')
                     if settings.get("Show More Console Logs"):
                         fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                 elif any(pattern in file_name for pattern in pattern_lists.get("Voice", [])):
                     total += 1
                     num_succeeded += 1
-                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Serum Presets', 'Voice')
+                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Presets', 'Serum Presets', 'Voice')
                     if settings.get("Show More Console Logs", True):
                         fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
@@ -497,7 +497,7 @@ def sort_files(file_path, pattern_lists):
                 elif any(pattern in file_name for pattern in pattern_lists.get("808", [])):
                     total += 1
                     num_succeeded += 1
-                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Serum Presets', '808')
+                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Presets', 'Serum Presets', '808')
                     if settings.get("Show More Console Logs", True):
                         fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
@@ -505,13 +505,13 @@ def sort_files(file_path, pattern_lists):
                 elif any(pattern in file_name for pattern in pattern_lists.get("DrumPresets", [])):
                     total += 1
                     num_succeeded += 1
-                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Serum Presets', 'DrumPresets')
+                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Presets', 'Serum Presets', 'DrumPresets')
                     if settings.get("Show More Console Logs", True):
                         fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
                         pass
                 else:
-                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Serum Presets', 'Unsorted')
+                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Presets', 'Serum Presets', 'Unsorted')
                     total += 1
                     num_failed += 1
                     if settings.get("Show More Console Logs", True):
@@ -521,7 +521,7 @@ def sort_files(file_path, pattern_lists):
             elif file_extension in ["nki"]:
                 total += 1
                 num_succeeded += 1
-                dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Native Instruments')
+                dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Presets', 'Native Instruments')
                 if settings.get("Show More Console Logs", True):
                     fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                 else:
@@ -662,7 +662,7 @@ def sort_files(file_path, pattern_lists):
             elif file_extension in ["nmsv"]:
                 if any(pattern in file_name for pattern in pattern_lists.get("Bass", [])):
                     num_succeeded += 1
-                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Massive Presets', 'Bass')
+                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Presets', 'Massive Presets', 'Bass')
                     total += 1
                     if settings.get("Show More Console Logs", True):
                         fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
@@ -671,7 +671,7 @@ def sort_files(file_path, pattern_lists):
                 elif any(pattern in file_name for pattern in pattern_lists.get("Plucks", [])):
                     total += 1
                     num_succeeded += 1
-                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Massive Presets', 'Plucks')
+                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Presets', 'Massive Presets', 'Plucks')
                     if settings.get("Show More Console Logs", True):
                         fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
@@ -679,7 +679,7 @@ def sort_files(file_path, pattern_lists):
                 elif any(pattern in file_name for pattern in pattern_lists.get("Keys", [])):
                     total += 1
                     num_succeeded += 1
-                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Massive Presets', 'Keys')
+                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Presets', 'Massive Presets', 'Keys')
                     if settings.get("Show More Console Logs", True):
                         fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
@@ -687,7 +687,7 @@ def sort_files(file_path, pattern_lists):
                 elif any(pattern in file_name for pattern in pattern_lists.get("Pad", [])):
                     total += 1
                     num_succeeded += 1
-                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Massive Presets', 'Pad')
+                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Presets', 'Massive Presets', 'Pad')
                     if settings.get("Show More Console Logs", True):
                         fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
@@ -695,7 +695,7 @@ def sort_files(file_path, pattern_lists):
                 elif any(pattern in file_name for pattern in pattern_lists.get("Lead", [])):
                     total += 1
                     num_succeeded += 1
-                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Massive Presets', 'Lead')
+                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Presets', 'Massive Presets', 'Lead')
                     if settings.get("Show More Console Logs", True):
                         fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
@@ -703,7 +703,7 @@ def sort_files(file_path, pattern_lists):
                 elif any(pattern in file_name for pattern in pattern_lists.get("Synth", [])):
                     total += 1
                     num_succeeded += 1
-                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Massive Presets', 'Synth')
+                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Presets', 'Massive Presets', 'Synth')
                     if settings.get("Show More Console Logs", True):
                         fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
@@ -711,7 +711,7 @@ def sort_files(file_path, pattern_lists):
                 elif any(pattern in file_name for pattern in pattern_lists.get("FX", [])):
                     total += 1
                     num_succeeded += 1
-                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Massive Presets', 'FX')
+                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Presets', 'Massive Presets', 'FX')
                     if settings.get("Show More Console Logs", True):
                         fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
@@ -719,7 +719,7 @@ def sort_files(file_path, pattern_lists):
                 elif any(pattern in file_name for pattern in pattern_lists.get("Atmos", [])):
                     total += 1
                     num_succeeded += 1
-                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Massive Presets', 'Atmos')
+                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Presets', 'Massive Presets', 'Atmos')
                     if settings.get("Show More Console Logs", True):
                         fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
@@ -727,7 +727,7 @@ def sort_files(file_path, pattern_lists):
                 elif any(pattern in file_name for pattern in pattern_lists.get("Voice", [])):
                     total += 1
                     num_succeeded += 1
-                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Massive Presets', 'Voice')
+                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Presets', 'Massive Presets', 'Voice')
                     if settings.get("Show More Console Logs", True):
                         fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
@@ -735,7 +735,7 @@ def sort_files(file_path, pattern_lists):
                 elif any(pattern in file_name for pattern in pattern_lists.get("808", [])):
                     total += 1
                     num_succeeded += 1
-                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Massive Presets', '808')
+                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Presets', 'Massive Presets', '808')
                     if settings.get("Show More Console Logs", True):
                         fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
@@ -743,13 +743,13 @@ def sort_files(file_path, pattern_lists):
                 elif any(pattern in file_name for pattern in pattern_lists.get("DrumPresets", [])):
                     total += 1
                     num_succeeded += 1
-                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Massive Presets', 'DrumPresets')
+                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Presets', 'Massive Presets', 'DrumPresets')
                     if settings.get("Show More Console Logs", True):
                         fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
                         pass
                 else:
-                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Massive Presets', 'Unsorted')
+                    dest_path = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"), 'Presets', 'Massive Presets', 'Unsorted')
                     total += 1
                     num_succeeded += 1
                     if settings.get("Show More Console Logs", True):
@@ -785,7 +785,6 @@ def sort_files(file_path, pattern_lists):
             if not os.path.exists(os.path.join(dest_path, filename)):
                 os.makedirs(dest_path, exist_ok="green")
                 shutil.move(file_path, dest_path)
-                #total += 1
             else:
                 pass
     elapsed_time = time.time() - start_time
