@@ -7,8 +7,8 @@ settings = os.path.join(os.environ['USERPROFILE'], 'Documents', 'slib-sorter', '
 
 with open(settings, 'r') as file:
     settings = json.load(file)
-file_path = path1 = os.path.join(os.environ['USERPROFILE'], 'Desktop', settings.get('To Be Processed Directory'))
-path2 = os.path.join(os.environ['USERPROFILE'], 'Documents', settings.get("Name Of Top Library Directory"))
+file_path = path1 = os.path.join(os.environ['USERPROFILE'], settings.get('TBPDPath'), settings.get('To Be Processed Directory'))
+path2 = os.path.join(os.environ['USERPROFILE'], settings.get('NOFLDPath'), settings.get("Name Of Top Library Directory"))
 fsf.check_dir(path1, path2)
 if settings.get("Run Shell Command On Startup", True):
     CmdOnStartup = settings.get("Command On Startup")
@@ -64,7 +64,7 @@ def sort_files(file_path, pattern_lists):
     num_failed = 0
     num_failed2 = 0
     num_succeeded = 0
-    rejected_unsorted_path = os.path.join(os.environ['USERPROFILE'], "Desktop", settings.get("Rejected Files"))
+    rejected_unsorted_path = os.path.join(os.environ['USERPROFILE'], settings.get('RFPath'), settings.get("Rejected Files"))
     fsf.check_if(rejected_unsorted_path)
     audio_exts = ["wav", "mp3", "aif", "aiff", "flac", "ogg", "WAV", "m4a"]
     plugin_exts = ["vst", "aax", "dll", "vst3"]
