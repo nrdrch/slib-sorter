@@ -17,7 +17,7 @@ git clone https://github.com/nrdrch/slib-sorter.git; python3 .\slib-sorter\src\s
 
 <img src="https://raw.githubusercontent.com/nrdrch/slib-sorter/main/examples/outputstatistics.png">
 
-> If its the first time running this, it will now have created two directories on your desktop.
+> If its the first time running this, it will now have created two directories on your desktop. 
 
 
 
@@ -25,6 +25,7 @@ git clone https://github.com/nrdrch/slib-sorter.git; python3 .\slib-sorter\src\s
 <img examples/direxample.png>
 
 1. Now Run
+> Reload your PowerShellProfile
 ```
 Start-Sorter -help
 ```
