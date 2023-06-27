@@ -16,7 +16,6 @@ with open(settings, 'r') as file:
     settings = json.load(file)
 file_path = path1 = os.path.join(os.environ['USERPROFILE'], settings.get('TBPDPath'), settings.get('To Be Processed Directory'))
 path2 = os.path.join(os.environ['USERPROFILE'], settings.get('NOFLDPath'), settings.get("Name Of Top Library Directory"))
-#print(path2, icon_path)
 folder_path = path2
 #fsf.change_folder_icon(folder_path, icon_path)
 fsf.check_dir(path1, path2)
