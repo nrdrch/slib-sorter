@@ -10,7 +10,7 @@ python3 -m pip install --upgrade termcolor
 ```
 ### Installation 
 ```
-git clone https://github.com/nrdrch/slib-sorter.git 
+git clone https://github.com/nrdrch/slib-sorter.git; cd .\slib-sorter\src
 ```
 
 ### Usage 
@@ -43,16 +43,8 @@ $home\Documents\slib-sorter\settings.json
 
 
 ### Suggestions
-- Create a function in - or imported into your $PROFILE for easier Execution.
 
-```
-# $HOME\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
-# example function 
-# Change the name to your prefered alias for easier execution.
-function sorter {
-    python3 $HOME\Documents\slib-sorter\src\slib-sorter.py
-}
-```
+
 
 ### Future additions
 - [x] Make any used path easier configurable by the user.
