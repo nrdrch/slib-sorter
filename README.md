@@ -10,14 +10,10 @@ python3 -m pip install --upgrade termcolor
 ```
 ### Installation 
 ```
-git clone https://github.com/nrdrch/slib-sorter.git; cd .\slib-sorter\src
+git clone https://github.com/nrdrch/slib-sorter.git; python3 .\slib-sorter\src\slib-sorter.py
 ```
 
 ### Usage 
-1. Run
-```
-python3 slib-sorter.py
-```
 
 <img src="https://raw.githubusercontent.com/nrdrch/slib-sorter/main/examples/outputstatistics.png">
 
@@ -28,7 +24,7 @@ python3 slib-sorter.py
 <img src="https://raw.githubusercontent.com/nrdrch/slib-sorter/main/examples/direxample.png?token=GHSAT0AAAAAACCUPKWOJF3EUJNKTAR7NJSSZEUEOLA">
 <img examples/direxample.png>
 
-2. Now Run
+1. Now Run
 ```
 Start-Sorter -help
 ```
