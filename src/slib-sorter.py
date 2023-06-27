@@ -1,23 +1,18 @@
 import os, shutil, stat, argparse
 import filesorterfunctions as fsf
-
 import time
 import json
 start_time = time.time()
 current_location = fsf.path_finder(0)
 source_file = os.path.join(current_location, 'slib-sorter.py')
 fsf.ps_script(source_file)
-
-
 icon_path = os.path.join(fsf.path_finder(1), 'examples', 'icn.ico')
-
 settings = os.path.join(fsf.path_finder(1), 'settings.json')
 with open(settings, 'r') as file:
     settings = json.load(file)
 file_path = path1 = os.path.join(os.environ['USERPROFILE'], settings.get('TBPDPath'), settings.get('To Be Processed Directory'))
 path2 = os.path.join(os.environ['USERPROFILE'], settings.get('NOFLDPath'), settings.get("Name Of Top Library Directory"))
 folder_path = path2
-#fsf.change_folder_icon(folder_path, icon_path)
 fsf.check_dir(path1, path2)
 if settings.get("Run Shell Command On Startup", True):
     CmdOnStartup = settings.get("Command On Startup")
@@ -69,8 +64,6 @@ pattern_lists = {
     "Templates": ['temp', 'Temp', 'Template']
 }
 def sort_files(file_path, pattern_lists):
-
-    
     total = 0
     num_failed = 0
     num_failed2 = 0
@@ -158,7 +151,6 @@ def sort_files(file_path, pattern_lists):
                         fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
                         pass
-
                 elif any(pattern in file_name for pattern in pattern_lists.get("Plucks", [])):
                     total += 1
                     num_succeeded += 1
@@ -231,8 +223,6 @@ def sort_files(file_path, pattern_lists):
                         fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
                         pass
-
-
                 elif any(pattern in file_name for pattern in pattern_lists.get("Riser", [])):
                     total += 1
                     num_succeeded += 1
@@ -353,7 +343,6 @@ def sort_files(file_path, pattern_lists):
                         fsf.log_console(f'{file_name}', f'{seperator}', f'{dest_path}', "green")
                     else:
                         pass
-
                 elif any(pattern in file_name for pattern in pattern_lists.get("Vox", [])):
                     total += 1
                     num_succeeded += 1
@@ -813,7 +802,6 @@ def sort_files(file_path, pattern_lists):
         func(path)
     shutil.rmtree(path1, onerror=remove_readonly)
     fsf.check_if(path1)
-    #fsf.split_files_in_subdirectories(path2, max_files_per_dir=50)
     def remove_readonly(func, path, _):
         os.chmod(path, stat.S_IWRITE)
         func(path)
@@ -822,7 +810,6 @@ def sort_files(file_path, pattern_lists):
     if settings.get("Show Top Bar", True):
         bar = settings.get("Top Bar")
         fsf.log_message(bar, f'{settings.get("Top Bar Color")}', True, True)
-        
     else:
         pass
     if settings.get("Show Statistics", True):
@@ -854,7 +841,7 @@ def sort_files(file_path, pattern_lists):
         fsf.log_message(f'or ', "dark_grey", False, False)
         fsf.log_message(f'{total_size_gb:.2f}', f'{settings.get("Statistics Value Color")}', False, False)
         fsf.log_message(f' gb', "light_grey", False, False)
-        fsf.log_message(f'', "light_grey", False, False)
+        fsf.log_message(f'', "light_grey", False, True)
     else:
         pass
     def remove_readonly(func, path, _):
@@ -863,26 +850,23 @@ def sort_files(file_path, pattern_lists):
     shutil.rmtree(path1, onerror=remove_readonly)
     fsf.check_dir(path1)
 sort_files(path1, pattern_lists)
-temp_content = "\nSorted Library Location:        " f"{os.path.join(os.environ['USERPROFILE'], settings.get('NOFLDPath'), settings.get('Name Of Top Library Directory'))}"+ "\nSettings Location:     "+ f"{os.path.join(fsf.path_finder(1), 'settings.json')}"+ "\nPyhton Script Location:    " f"{os.path.join(current_location, 'slib-sorter.py')}"+ "\nTo Be Sorted Location:    " f"{os.path.join(os.environ['USERPROFILE'], settings.get('TBPDPath'), settings.get('To Be Processed Directory'))}"+ "\nRejected Files Location:     " f"{os.path.join(os.environ['USERPROFILE'], settings.get('RFPath'), settings.get('Rejected Files'))}"
-print('')
+temp_content = "\nSorted Library Location:        "+ f"{os.path.join(os.environ['USERPROFILE'], settings.get('NOFLDPath'), settings.get('Name Of Top Library Directory'))}"+ "\nSettings Location:     "+ f"{os.path.join(fsf.path_finder(1), 'settings.json')}"+ "\nPyhton Script Location:    " f"{os.path.join(current_location, 'slib-sorter.py')}"+ "\nTo Be Sorted Location:    " f"{os.path.join(os.environ['USERPROFILE'], settings.get('TBPDPath'), settings.get('To Be Processed Directory'))}"+ "\nRejected Files Location:     " f"{os.path.join(os.environ['USERPROFILE'], settings.get('RFPath'), settings.get('Rejected Files'))}"
 def print_help_message():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-Paths", action="store_true", help="Print the paths.")
-    parser.add_argument("-Help", action="store_true", help="Print the manual.")
-    parser.add_argument("-Colors", action="store_true", help="Print the possible color settings.")
+    parser.add_argument("-paths", action="store_true")
+    parser.add_argument("-help", action="store_true")
+    parser.add_argument("-colors", action="store_true")
     temp_file_path = fsf.temp_path_file(temp_content)
     args = parser.parse_args()
-    if args.Paths:
+    spacer = "              "
+    if args.paths:
         with open(temp_file_path, 'r') as file:
-    # Read the contents of the file
             temp_file_path = file.read()
-    
-    # Print the contents
-            os.system('cls')
-            bar = settings.get("Top Bar")
-            fsf.log_message(bar, f'{settings.get("Top Bar Color")}', True, True)
-            print(temp_file_path)
-    elif args.Colors:
+        os.system('cls')
+        bar = settings.get("Top Bar")
+        fsf.log_message(bar, f'{settings.get("Top Bar Color")}', True, True)
+        fsf.log_message(temp_content, 'white', False, True)
+    elif args.colors:
         os.system('cls')
         bar = settings.get("Top Bar")
         fsf.log_message(bar, f'{settings.get("Top Bar Color")}', True, True)
@@ -890,18 +874,23 @@ def print_help_message():
             "Colors": ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white', 'light_grey', 'dark_grey', 'light_red', 'light_green', 'light_yellow', 'light_blue', 'light_magenta', 'light_cyan']
         }
         colors = clist["Colors"]
+        fsf.log_message("Possible Color Settings", f'{settings.get("Statistics Value Color")}', False, False)
+        fsf.log_message(':', f'{settings.get("Foregroud Color 1")}', False, True)
         for color in colors:
-            fsf.log_message(color, f'{color}', False, True)
-    elif args.Help:
+            fsf.log_message(spacer+ color, f'{color}', False, True)
+    elif args.help:
         os.system('cls')
+        
         bar = settings.get("Top Bar")
         fsf.log_message(bar, f'{settings.get("Top Bar Color")}', True, True)
-        fsf.log_message('Help: ', f'{settings.get("Foregroud Color 1")}', False, True)
-        fsf.log_message('           -Paths      = Displays Paths', f'{settings.get("Foregroud Color 1")}', False, True)
-        fsf.log_message('           -Colors      = Displays Color Options', f'{settings.get("Foregroud Color 1")}', False, True)
-        fsf.log_message('           -Help      = Displays Help', f'{settings.get("Foregroud Color 1")}', False, True)
+        fsf.log_message('Help', f'{settings.get("Statistics Value Color")}', False, False)
+        fsf.log_message(':', f'{settings.get("Foregroud Color 1")}', False, True)
+        fsf.log_message('           -paths '+ f'{spacer}', f'{settings.get("Foregroud Color 1")}', False, False)
+        fsf.log_message('Displays Paths', f'{settings.get("Statistics Value Color")}', False, True)
+        fsf.log_message('           -colors'+ f'{spacer}', f'{settings.get("Foregroud Color 1")}', False, False)
+        fsf.log_message('Displays Possible Color Settings', f'{settings.get("Statistics Value Color")}', False, True)
+        fsf.log_message('           -help  '+ f'{spacer}', f'{settings.get("Foregroud Color 1")}', False, False)
+        fsf.log_message('Displays Help', f'{settings.get("Statistics Value Color")}', False, True)
     else:
         pass
-    
 print_help_message()
-

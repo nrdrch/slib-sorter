@@ -38,35 +38,16 @@ def ps_script(source_file):
     if not os.path.exists(powershell_scripts_folder):
         os.makedirs(powershell_scripts_folder)
     powershell_script_file = os.path.join(powershell_scripts_folder, 'slib-sorter' + ".psm1")
-    script_content = f'''function Start-Sorter {{
-    [CmdletBinding()]
-    param (
-        [switch]$Paths,
-        [switch]$Help,
-        [switch]$Colors
+    script_content = f'''
+    function Start-Sorter {{
+        [CmdletBinding()]
+        param(
+            [Parameter(ValueFromRemainingArguments=$true)]
+            [string]$CustomInput
         )
-        if ($Help) {{
-            
-            $pythonScript = '{source_file}'
-            python3 $pythonScript -Help
-        }}
-        elseif ($Colors) {{
-            
-            $pythonScript = '{source_file}'
-            python3 $pythonScript -Colors
-        }}
-        elseif ($Paths) {{
-            
-            $pythonScript = '{source_file}'
-            python3 $pythonScript -Paths
-        }}
-        else {{
-            $pythonScript = '{source_file}'
-
-
-
-            & python3 $pythonScript
-        }}
+        $argsString = $CustomInput -join "' '"
+        $pythonScript = '{source_file}'
+        python3 $pythonScript $argsString
     }}
     '''
 
@@ -205,7 +186,9 @@ def temp_path_file(temp_content):
     file_path = tempfile.mktemp(dir=temp_dir)
     
     with open(file_path, 'a') as file:
-        file.write(temp_content)
-    
+        if isinstance(temp_content, dict):
+            json.dump(temp_content, file)
+        else:
+            file.write(temp_content)
     return file_path
 
