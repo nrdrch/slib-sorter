@@ -38,7 +38,7 @@ def ps_script(source_file):
     if not os.path.exists(powershell_scripts_folder):
         os.makedirs(powershell_scripts_folder)
     powershell_script_file = os.path.join(powershell_scripts_folder, 'slib-sorter' + ".psm1")
-    script_content = f'''function slib-sorter {{
+    script_content = f'''function Start-Sorter {{
     [CmdletBinding()]
     param (
         [switch]$Paths,
