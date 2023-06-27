@@ -856,6 +856,7 @@ def print_help_message():
     parser.add_argument("-paths", action="store_true")
     parser.add_argument("-help", action="store_true")
     parser.add_argument("-colors", action="store_true")
+    parser.add_argument("-config", action="store_true")
     temp_file_path = fsf.temp_path_file(temp_content)
     args = parser.parse_args()
     spacer = "              "
@@ -889,8 +890,15 @@ def print_help_message():
         fsf.log_message('Displays Paths', f'{settings.get("Statistics Value Color")}', False, True)
         fsf.log_message('           -colors'+ f'{spacer}', f'{settings.get("Foregroud Color 1")}', False, False)
         fsf.log_message('Displays Possible Color Settings', f'{settings.get("Statistics Value Color")}', False, True)
+        fsf.log_message('           -config'+ f'{spacer}', f'{settings.get("Foregroud Color 1")}', False, False)
+        fsf.log_message('Launch Config File', f'{settings.get("Statistics Value Color")}', False, True)
         fsf.log_message('           -help  '+ f'{spacer}', f'{settings.get("Foregroud Color 1")}', False, False)
         fsf.log_message('Displays Help', f'{settings.get("Statistics Value Color")}', False, True)
+
+    elif args.config:
+        settingsfile = os.path.join(fsf.path_finder(1), 'settings.json')
+        cmd = "Start "+ settingsfile
+        os.system(cmd)
     else:
         pass
 print_help_message()

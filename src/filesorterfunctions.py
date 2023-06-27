@@ -4,11 +4,9 @@ import json
 import ctypes
 def path_finder(levels_up=0):
     current_dir = os.path.abspath(os.path.dirname(__file__))
-    
     if levels_up > 0:
         for _ in range(levels_up):
             current_dir = os.path.dirname(current_dir)
-    
     return current_dir
 settings = os.path.join(path_finder(1), 'settings.json')
 def check_dir(*paths):
@@ -31,7 +29,6 @@ def check_if(*paths):
     for path in paths:
         if not os.path.exists(path):
             os.makedirs(path)
-
 def ps_script(source_file):
     winpro = os.path.join(os.environ['USERPROFILE'],'Documents', 'WindowsPowerShell')
     powershell_scripts_folder = os.path.join(winpro, 'Scripts')
@@ -50,50 +47,32 @@ def ps_script(source_file):
         python3 $pythonScript $argsString
     }}
     '''
-
-    # Write the PowerShell script content to the script file
     with open(powershell_script_file, 'w') as f:
         f.write(script_content)
-    
-    # Get the path to the user's PowerShell profile file
     profile_path = os.path.expanduser("~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1")
-
-    # Check if the import command is already present in the profile file
     with open(profile_path, 'r') as f:
         profile_content = f.read()
         if f"Import-Module -DisableNameChecking \"{powershell_script_file}\"" in profile_content:
             pass
         else:
-            # Append the import command to the profile file
             with open(profile_path, 'a') as f:
                 f.write(f"\nImport-Module -DisableNameChecking \"{powershell_script_file}\"")
 def change_folder_icon(folder_path, icon_path):
-    # Check if the folder exists
     if not os.path.exists(folder_path):
         print("Folder does not exist.")
         return
-    
-    # Get the folder's absolute path
     folder_path = os.path.abspath(folder_path)
-    
     try:
-        # Create a desktop.ini file in the folder
         ini_path = os.path.join(folder_path, "desktop.ini")
         with open(ini_path, "w") as ini_file:
             ini_file.write("[.ShellClassInfo]\n")
             ini_file.write(f"IconFile={icon_path}\n")
             ini_file.write("IconIndex=0\n")
-        
-        # Set the desktop.ini file as system and hidden
         ctypes.windll.kernel32.SetFileAttributesW(ini_path, 0x2 | 0x4)
-        
-        # Refresh the folder's view to apply the changes
         ctypes.windll.shell32.SHChangeNotify(0x08000000, 0x0000, None, None)
-        
         print("Folder icon changed successfully.")
     except Exception as e:
         print(f"An error occurred: {str(e)}")
-
 with open(settings, 'r') as file:
     settings = json.load(file)
 file_path = path1 = os.path.join(os.environ['USERPROFILE'], settings.get('TBPDPath'), settings.get('To Be Processed Directory'))
@@ -165,10 +144,8 @@ def split_files_in_subdirectories(path2, max_files_per_dir=50):
                 new_dir_path = os.path.join(root, new_dir_name)
                 try:
                     os.mkdir(new_dir_path)
-                
                 except FileExistsError:
                     print()
-        
             for i, file_name in enumerate(files):
                 old_file_path = os.path.join(root, file_name)
                 new_dir_index = i // max_files_per_dir
@@ -178,17 +155,12 @@ def split_files_in_subdirectories(path2, max_files_per_dir=50):
                 new_dir_path = os.path.join(root, new_dir_name)
                 new_file_path = os.path.join(new_dir_path, file_name)
                 shutil.move(old_file_path, new_file_path)
-
-
 def temp_path_file(temp_content):
-    
     temp_dir = tempfile.gettempdir()
     file_path = tempfile.mktemp(dir=temp_dir)
-    
     with open(file_path, 'a') as file:
         if isinstance(temp_content, dict):
             json.dump(temp_content, file)
         else:
             file.write(temp_content)
     return file_path
-
