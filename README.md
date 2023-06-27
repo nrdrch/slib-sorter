@@ -10,13 +10,13 @@ python3 -m pip install --upgrade termcolor
 ```
 ### Installation 
 ```
-git clone https://github.com/nrdrch/slib-sorter.git $HOME\Documents\slib-sorter
+git clone https://github.com/nrdrch/slib-sorter.git 
 ```
 
 ### Usage 
 1. Run
 ```
-python3 $home\Documents\slib-sorter\src\slib-sorter.py
+python3 slib-sorter.py
 ```
 
 <img src="https://raw.githubusercontent.com/nrdrch/slib-sorter/main/examples/outputstatistics.png">
