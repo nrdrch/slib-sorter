@@ -25,7 +25,7 @@ git clone https://github.com/nrdrch/slib-sorter.git; python3 .\slib-sorter\src\s
 <img examples/direxample.png>
 
 1. Now Run
-> Reload your PowerShellProfile
+> Restart your PowerShell
 ```
 Start-Sorter -help
 ```
