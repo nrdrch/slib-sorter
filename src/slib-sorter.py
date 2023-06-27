@@ -891,7 +891,7 @@ def print_help_message():
         }
         colors = clist["Colors"]
         for color in colors:
-            fsf.log_message(color, f'{color}', True, True)
+            fsf.log_message(color, f'{color}', False, True)
     elif args.Help:
         os.system('cls')
         bar = settings.get("Top Bar")
