@@ -28,6 +28,11 @@ python3 slib-sorter.py
 <img src="https://raw.githubusercontent.com/nrdrch/slib-sorter/main/examples/direxample.png?token=GHSAT0AAAAAACCUPKWOJF3EUJNKTAR7NJSSZEUEOLA">
 <img examples/direxample.png>
 
+2. Now Run
+```
+Start-Sorter -help
+```
+
 #### Note: Among other things, the names of these two directories & the name of the finished library can be changed in the settings file. 
 ```
 $home\Documents\slib-sorter\settings.json
