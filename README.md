@@ -19,7 +19,7 @@ git clone https://github.com/nrdrch/slib-sorter.git; python3 .\slib-sorter\src\s
 ```
 Start-Sorter -help
 ```
-<img src="https://raw.githubusercontent.com/nrdrch/slib-sorter/main/examples/outputstatistics.png">
+
 
 > If its the first time running this, it will now have created two directories on your desktop. 
 
@@ -29,7 +29,7 @@ Start-Sorter -help
 <img examples/direxample.png>
 
 
-
+<img src="https://raw.githubusercontent.com/nrdrch/slib-sorter/main/examples/outputstatistics.png">
 #### Note: Among other things, the names of these two directories & the name of the finished library can be changed in the settings file. 
 ```
 $home\Documents\slib-sorter\settings.json
