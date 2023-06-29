@@ -17,7 +17,7 @@ git clone https://github.com/nrdrch/slib-sorter.git; python3 .\slib-sorter\src\s
 1. Restart your PowerShell.
 2. Run:
 ```
-Start-Sorter -help
+Start-Sorter
 ```
 
 
@@ -35,9 +35,9 @@ Start-Sorter -help
 ```
 $home\Documents\slib-sorter\settings.json
 ```
-
-
-<img src="https://raw.githubusercontent.com/nrdrch/slib-sorter/main/examples/settings.png">
+```
+Start-Sorter -config
+```
 
 
 2. Move all your files into the 'To Be Sorted' directory
