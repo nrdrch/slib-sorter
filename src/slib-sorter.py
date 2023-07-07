@@ -2,6 +2,7 @@ import os, shutil, stat, argparse
 import filesorterfunctions as fsf
 import time
 import json
+from termcolor import colored, cprint
 start_time = time.time()
 current_location = fsf.path_finder(0)
 source_file = os.path.join(current_location, 'slib-sorter.py')
@@ -849,7 +850,6 @@ def sort_files(file_path, pattern_lists):
         func(path)
     shutil.rmtree(path1, onerror=remove_readonly)
     fsf.check_dir(path1)
-sort_files(path1, pattern_lists)
 temp_content = "\nSorted Library Location:        "+ f"{os.path.join(os.environ['USERPROFILE'], settings.get('NOFLDPath'), settings.get('Name Of Top Library Directory'))}"+ "\nSettings Location:     "+ f"{os.path.join(fsf.path_finder(1), 'settings.json')}"+ "\nPyhton Script Location:    " f"{os.path.join(current_location, 'slib-sorter.py')}"+ "\nTo Be Sorted Location:    " f"{os.path.join(os.environ['USERPROFILE'], settings.get('TBPDPath'), settings.get('To Be Processed Directory'))}"+ "\nRejected Files Location:     " f"{os.path.join(os.environ['USERPROFILE'], settings.get('RFPath'), settings.get('Rejected Files'))}"
 def print_help_message():
     parser = argparse.ArgumentParser()
@@ -881,7 +881,6 @@ def print_help_message():
             fsf.log_message(spacer+ color, f'{color}', False, True)
     elif args.help:
         os.system('cls')
-        
         bar = settings.get("Top Bar")
         fsf.log_message(bar, f'{settings.get("Top Bar Color")}', True, True)
         fsf.log_message('Help', f'{settings.get("Statistics Value Color")}', False, False)
@@ -894,11 +893,12 @@ def print_help_message():
         fsf.log_message('Launch Config File', f'{settings.get("Statistics Value Color")}', False, True)
         fsf.log_message('           -help  '+ f'{spacer}', f'{settings.get("Foregroud Color 1")}', False, False)
         fsf.log_message('Displays Help', f'{settings.get("Statistics Value Color")}', False, True)
-
     elif args.config:
         settingsfile = os.path.join(fsf.path_finder(1), 'settings.json')
         cmd = "Start "+ settingsfile
         os.system(cmd)
     else:
-        pass
-print_help_message()
+        sort_files(path1, pattern_lists) 
+def __main__():
+    print_help_message()
+__main__()
