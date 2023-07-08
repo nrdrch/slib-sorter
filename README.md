@@ -15,19 +15,25 @@ git clone https://github.com/nrdrch/slib-sorter.git; python3 \slib-sorter\src\sl
 ```
 
 ### Usage 
+> If its the first time running or if the directories don't exist, it will create these on your desktop.
+<img src="https://raw.githubusercontent.com/nrdrch/slib-sorter/main/examples/direxample.png?token=GHSAT0AAAAAACCUPKWOJF3EUJNKTAR7NJSSZEUEOLA">
+
+1. Copy all your files into the 'To Be Sorted' directory
+2. Run the command again and wait for the process to be completed 
 ```
 Slib-Sorter
 ```
+3. Inspect the newly created Sample Library
 > for other options look at:
 ```
 Slib-Sorter -help
 ```
 
-> If its the first time running this, it will now have created two directories on your desktop. 
 
 
 
-<img src="https://raw.githubusercontent.com/nrdrch/slib-sorter/main/examples/direxample.png?token=GHSAT0AAAAAACCUPKWOJF3EUJNKTAR7NJSSZEUEOLA">
+
+
 
 
 
@@ -42,9 +48,7 @@ Slib-Sorter -config
 ```
 
 
-2. Move all your files into the 'To Be Sorted' directory
-3. Run the same command again and wait for the process to be completed 
-4. Inspect the newly created Sample Library located under 'Documents\Sample Library' folder.
+
 
 
 ### Suggestions
