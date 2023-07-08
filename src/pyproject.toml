@@ -1,0 +1,20 @@
+[build-system]
+requires = [
+    "setuptools>=60.0.0",
+    "wheel>=0.40.0",
+    "termcolor>=2.3.0"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+readme = "README.md"
+name = "slib-sorter"
+requires-python = ">3.7"
+version = "1.1.0"
+description = "A Python library for sorting Sample Libraries"
+license = "Apache-2.0"
+authors = ["Lukas Hübinger <fettkindasindauchoke@gmail.com>"]
+
+[project.urls]
+homepage = "https://github.com/nrdrch/slib-sorter"
+repository = "https://github.com/nrdrch/slib-sorter"

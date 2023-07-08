@@ -1,18 +1,30 @@
-import os, shutil, stat, tempfile
+import os, shutil, stat, tempfile, json, ctypes, importlib
 from termcolor import colored
-import json
-import ctypes
+
 def path_finder(levels_up=0):
     current_dir = os.path.abspath(os.path.dirname(__file__))
     if levels_up > 0:
         for _ in range(levels_up):
             current_dir = os.path.dirname(current_dir)
     return current_dir
-settings = os.path.join(path_finder(1), 'settings.json')
+#settings = os.path.join(path_finder(0), 'settings.json')
 def check_dir(*paths):
     for path in paths:
         if not os.path.exists(path):
             os.makedirs(path)
+settings_folder = os.path.join(os.environ['USERPROFILE'], 'Documents', 'WindowsPowerShell', 'Scripts', 'slib_sorter')
+settings = os.path.join(settings_folder, "settings.json")
+#def check_settings():
+#    settings_folder = os.path.join(os.environ['USERPROFILE'], 'Documents', 'WindowsPowerShell', 'Scripts', 'slib_sorter')
+#    settings_file = os.path.join(settings_folder, "settings.json")
+#
+#    
+#    if not os.path.exists(settings_folder):
+#        os.makedirs(settings_folder)
+#    with open(settings_file, 'w') as file:
+#        file.write(default_config)
+
+
 def log_message(message, color, centered=False, newline=True):
     if centered:
         message = message.center(119)
@@ -25,30 +37,58 @@ def log_console(file_name, seperator, dest_path, color):
         log_message(f' {dest_path}', "white", False, True)
     else:
         pass
-def check_if(*paths):
-    for path in paths:
-        if not os.path.exists(path):
-            os.makedirs(path)
 def ps_script(source_file):
     winpro = os.path.join(os.environ['USERPROFILE'],'Documents', 'WindowsPowerShell')
-    powershell_scripts_folder = os.path.join(winpro, 'Scripts')
+    powershell_scripts_folder = os.path.join(winpro, 'Scripts', 'slib_sorter')
     if not os.path.exists(powershell_scripts_folder):
         os.makedirs(powershell_scripts_folder)
-    powershell_script_file = os.path.join(powershell_scripts_folder, 'slib-sorter' + ".psm1")
+    powershell_script_file = os.path.join(powershell_scripts_folder, 'slib_sorter' + ".psm1")
+    settings_file = os.path.join(powershell_scripts_folder, 'settings.json')
     script_content = f'''
-    function Start-Sorter {{
-        [CmdletBinding()]
-        param(
-            [Parameter(ValueFromRemainingArguments=$true)]
-            [string]$CustomInput
-        )
-        $argsString = $CustomInput -join "' '"
-        $pythonScript = '{source_file}'
-        python3 $pythonScript $argsString
-    }}
+function Start-Sorter {{
+    [CmdletBinding()]
+    param(
+        [Parameter(ValueFromRemainingArguments=$true)]
+        [string]$CustomInput
+    )
+    $argsString = $CustomInput -join "' '"
+    $pythonScript = '{source_file}'
+    python3 $pythonScript $argsString
+}}
     '''
-    with open(powershell_script_file, 'w') as f:
+    with open(powershell_script_file, 'a') as f:
         f.write(script_content)
+    
+    if not os.path.exists(settings_folder):
+        os.makedirs(settings_folder)
+    default_config = f'''
+{{
+    "Foregroud Color 1": "white",
+    "Top Bar Color": "dark_grey",
+    "Show Top Bar": true,
+    "Top Bar": "<   Sample Library Sorter   >",
+    "Prompt Color": "dark_grey",
+    "Prompt": "$ ",
+    "Console Log Seperator": "  >>>--<>  ",
+    "Show More Console Logs": false,
+    "Show Seperator": true,
+    "Show Statistics": true,
+    "Statistics Value Color": "light_red",
+    "Max files per Dir": 50,
+    "TBPDPath": "Desktop",
+    "To Be Processed Directory": "To Be Sorted",
+    "NOFLDPath": "Desktop",
+    "Name Of Top Library Directory": "Sample Library",
+    "RFPath": "Desktop",
+    "Rejected Files": "Rejected Files",
+    "Run Shell Command On Startup": false,
+    "Command On Startup": "cls" 
+}}
+    '''
+    with open(settings_file, 'w') as f:
+        f.write(default_config)
+    with open(settings_file, 'r') as file:
+        settings_file = json.load(file)
     profile_path = os.path.expanduser("~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1")
     with open(profile_path, 'r') as f:
         profile_content = f.read()
@@ -57,6 +97,19 @@ def ps_script(source_file):
         else:
             with open(profile_path, 'a') as f:
                 f.write(f"\nImport-Module -DisableNameChecking \"{powershell_script_file}\"")
+    try:
+        if settings.get("Run Shell Command On Startup", True):
+            CmdOnStartup = settings.get("Command On Startup")
+            os.system(CmdOnStartup)
+        else:
+            pass
+    except:
+        winpro = os.path.join(os.environ['USERPROFILE'],'Documents', 'WindowsPowerShell')
+        powershell_scripts_folder = os.path.join(winpro, 'Scripts', 'slib_sorter')
+        settings_file = os.path.join(powershell_scripts_folder, 'settings.json')
+        importlib.reload(settings_file)
+        #setupfile = os.path.join(path_finder(0), 'setup.py')
+        importlib.reload(settings_file)
 def change_folder_icon(folder_path, icon_path):
     if not os.path.exists(folder_path):
         print("Folder does not exist.")
@@ -73,15 +126,16 @@ def change_folder_icon(folder_path, icon_path):
         print("Folder icon changed successfully.")
     except Exception as e:
         print(f"An error occurred: {str(e)}")
-with open(settings, 'r') as file:
-    settings = json.load(file)
-file_path = path1 = os.path.join(os.environ['USERPROFILE'], settings.get('TBPDPath'), settings.get('To Be Processed Directory'))
-path2 = os.path.join(os.environ['USERPROFILE'], settings.get('NOFLDPath'), settings.get("Name Of Top Library Directory"))
-if settings.get("Run Shell Command On Startup", True):
-    CmdOnStartup = settings.get("Command On Startup")
-    os.system(CmdOnStartup)
+
+if not os.path.exists(settings):
+    current_location = path_finder(0)
+    source_file = os.path.join(current_location, 'slib_sorter.py')
+    ps_script(source_file)
+
 else:
-    pass
+    with open(settings, 'r') as file:
+        settings = json.load(file)
+
 def organize_files_by_extension(path):
     if not os.path.isdir(path):
         raise Exception("The path provided is not a directory.")
@@ -127,6 +181,8 @@ def remove_directory_tree(path):
     except OSError as error:
         os.chmod(path, stat.S_IWRITE)
         os.remove(path)
+file_path = path1 = os.path.join(os.environ['USERPROFILE'], settings.get('TBPDPath'), settings.get('To Be Processed Directory'))
+path2 = os.path.join(os.environ['USERPROFILE'], settings.get('NOFLDPath'), settings.get("Name Of Top Library Directory"))
 def split_files_in_subdirectories(path2, max_files_per_dir=50):
     for root, dirs, files in os.walk(path2):
         if root == path2:
