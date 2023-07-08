@@ -38,78 +38,7 @@ def log_console(file_name, seperator, dest_path, color):
         log_message(f' {dest_path}', "white", False, True)
     else:
         pass
-def ps_script(source_file):
-    winpro = os.path.join(os.environ['USERPROFILE'],'Documents', 'WindowsPowerShell')
-    powershell_scripts_folder = os.path.join(winpro, 'Scripts', 'slib_sorter')
-    if not os.path.exists(powershell_scripts_folder):
-        os.makedirs(powershell_scripts_folder)
-    powershell_script_file = os.path.join(powershell_scripts_folder, 'slib_sorter' + ".psm1")
-    settings_file = os.path.join(powershell_scripts_folder, 'settings.json')
-    script_content = f'''
-function Start-Sorter {{
-    [CmdletBinding()]
-    param(
-        [Parameter(ValueFromRemainingArguments=$true)]
-        [string]$CustomInput
-    )
-    $argsString = $CustomInput -join "' '"
-    $pythonScript = '{source_file}'
-    python3 $pythonScript $argsString
-}}
-    '''
-    #with open(powershell_script_file, 'a') as f:
-    #    f.write(script_content)
-    
-    if not os.path.exists(settings_folder):
-        os.makedirs(settings_folder)
-    default_config = f'''
-{{
-    "Foregroud Color 1": "white",
-    "Top Bar Color": "dark_grey",
-    "Show Top Bar": true,
-    "Top Bar": "<   Sample Library Sorter   >",
-    "Prompt Color": "dark_grey",
-    "Prompt": "$ ",
-    "Console Log Seperator": "  >>>--<>  ",
-    "Show More Console Logs": false,
-    "Show Seperator": true,
-    "Show Statistics": true,
-    "Statistics Value Color": "light_red",
-    "Max files per Dir": 50,
-    "TBPDPath": "Desktop",
-    "To Be Processed Directory": "To Be Sorted",
-    "NOFLDPath": "Desktop",
-    "Name Of Top Library Directory": "Sample Library",
-    "RFPath": "Desktop",
-    "Rejected Files": "Rejected Files",
-    "Run Shell Command On Startup": false,
-    "Command On Startup": "cls" 
-}}
-    '''
-    with open(settings_file, 'w') as f:
-        f.write(default_config)
-    with open(settings_file, 'r') as file:
-        settings_file = json.load(file)
-    #profile_path = os.path.expanduser("~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1")
-    #with open(profile_path, 'r') as f:
-    #    profile_content = f.read()
-    #    if f"Import-Module -DisableNameChecking \"{powershell_script_file}\"" in profile_content:
-    #        pass
-    #    else:
-    #        with open(profile_path, 'a') as f:
-    #            f.write(f"\nImport-Module -DisableNameChecking \"{powershell_script_file}\"")
-    try:
-        if settings.get("Run Shell Command On Startup", True):
-            CmdOnStartup = settings.get("Command On Startup")
-            os.system(CmdOnStartup)
-        else:
-            pass
-    except:
-        winpro = os.path.join(os.environ['USERPROFILE'],'Documents', 'WindowsPowerShell')
-        powershell_scripts_folder = os.path.join(winpro, 'Scripts', 'slib_sorter')
-        
-        importlib.reload(settings_f)
-        #setupfile = os.path.join(path_finder(0), 'setup.py')
+
 def change_folder_icon(folder_path, icon_path):
     if not os.path.exists(folder_path):
         print("Folder does not exist.")
@@ -127,14 +56,9 @@ def change_folder_icon(folder_path, icon_path):
     except Exception as e:
         print(f"An error occurred: {str(e)}")
 
-if not os.path.exists(settings):
-    current_location = path_finder(0)
-    source_file = os.path.join(current_location, 'slib_sorter.py')
-    ps_script(source_file)
 
-else:
-    with open(settings, 'r') as file:
-        settings = json.load(file)
+with open(settings, 'r') as file:
+    settings = json.load(file)
 
 def organize_files_by_extension(path):
     if not os.path.isdir(path):
@@ -226,7 +150,6 @@ def temp_path_file(temp_content):
 start_time = time.time()
 current_location = path_finder(0)
 source_file = os.path.join(current_location, 'slib_sorter.py')
-ps_script(source_file)
 icon_path = os.path.join(path_finder(1), 'examples', 'icn.ico')
 
 settings_f = os.path.join(os.environ['USERPROFILE'], 'Documents', 'WindowsPowerShell', 'Scripts', 'slib_sorter', 'settings.json')
@@ -1123,4 +1046,4 @@ def print_help_message():
         sort_files(path1, pattern_lists) 
 def __main__():
     print_help_message()
-__main__
+__main__()

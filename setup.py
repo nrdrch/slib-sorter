@@ -2,7 +2,8 @@ import setuptools
 import shutil
 import os
 import json, importlib
-current_location = os.path.abspath(os.path.dirname(__file__))
+settings_folder = os.path.join(os.environ['USERPROFILE'], 'Documents', 'WindowsPowerShell', 'Scripts', 'slib_sorter')
+settings = os.path.join(settings_folder, "settings.json")
 def ps_script(source_file):
     winpro = os.path.join(os.environ['USERPROFILE'],'Documents', 'WindowsPowerShell')
     powershell_scripts_folder = os.path.join(winpro, 'Scripts', 'slib_sorter')
@@ -25,8 +26,8 @@ function Start-Sorter {{
     #with open(powershell_script_file, 'a') as f:
     #    f.write(script_content)
     
-    if not os.path.exists(powershell_scripts_folder):
-        os.makedirs(powershell_scripts_folder)
+    if not os.path.exists(settings_folder):
+        os.makedirs(settings_folder)
     default_config = f'''
 {{
     "Foregroud Color 1": "white",
@@ -51,11 +52,14 @@ function Start-Sorter {{
     "Command On Startup": "cls" 
 }}
     '''
-    with open(settings_file, 'w') as f:
-        f.write(default_config)
-    settings = settings_file
+    if not os.path.exists(settings):
+        with open(settings, 'w') as f:
+            f.write(default_config)
+    else:
+        pass
     with open(settings, 'r') as file:
         settings = json.load(file)
+    settings = settings_file
     #profile_path = os.path.expanduser("~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1")
     #with open(profile_path, 'r') as f:
     #    profile_content = f.read()
@@ -73,17 +77,20 @@ function Start-Sorter {{
     except:
         winpro = os.path.join(os.environ['USERPROFILE'],'Documents', 'WindowsPowerShell')
         powershell_scripts_folder = os.path.join(winpro, 'Scripts', 'slib_sorter')
-        settings_file = os.path.join(powershell_scripts_folder, 'settings.json')
-        importlib.reload(settings_file)
+        
+        importlib.reload(settings)
         #setupfile = os.path.join(path_finder(0), 'setup.py')
-        importlib.reload(settings_file)
+
+
+
+current_location = os.path.abspath(os.path.dirname(__file__))
 def install():
     with open("README.md", "r", encoding="utf-8") as fh:
         long_description = fh.read()
 
     setuptools.setup(
         name="slib-sorter",
-        version="1.1.9",
+        version="1.2.2",
         author="Lukas Hübinger",
         author_email="fettkindasindauchoke@gmail.com",
         description="A Python package for sorting Sample Libraries",
@@ -108,7 +115,7 @@ def install():
     ps_script(os.path.join(current_location, "src", "slib_sorter.py"))
     
 def reload():
-    importlib.reload(current_location)
+    importlib.reload(settings)
 def __main__():
     try:
         install()
