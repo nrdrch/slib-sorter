@@ -56,7 +56,7 @@ def install():
 
     setuptools.setup(
         name="slib-sorter",
-        version="1.3.9",
+        version="1.4.0",
         author="Lukas H",
         author_email="fettkindasindauchoke@gmail.com",
         description="A Python package for sorting Sample Libraries",

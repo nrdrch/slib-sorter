@@ -55,6 +55,7 @@ def log_message(message, color, centered=False, newline=True):
         message = message.center(119)
     end = "\n" if newline else ""
     print(colored(message, color), end=end)
+
 def log_console(file_name, seperator, dest_path, color):
     if settings.get("Show More Console Logs", True):
         log_message(f'{file_name}', f'{color}', False, False)
@@ -236,7 +237,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Drum', 'Percussion')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("DrumLoops", [])):
@@ -244,7 +245,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Drum', 'Loops')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("VocalLoops", [])):
@@ -252,7 +253,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Voice', 'Loops')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("MelodicLoops", [])):
@@ -260,7 +261,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Melodic', 'Loops')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("BassLoops", [])):
@@ -268,7 +269,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Melodic', 'Bass', 'Loops')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("DrumKick", [])):
@@ -276,7 +277,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Drum', 'Kicks')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("DrumSnare", [])):
@@ -284,7 +285,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Drum', 'Snares')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("DrumShakers", [])):
@@ -292,7 +293,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Drum', 'Shakers')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Synth", [])):
@@ -300,7 +301,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Melodic', 'Synths')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Plucks", [])):
@@ -308,7 +309,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Melodic', 'Plucks')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Bass", [])):
@@ -316,7 +317,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Melodic', 'Bass')
                     if settings.get("Show More Console Logs", "True"):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Keys", [])):
@@ -324,7 +325,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Melodic', 'Keys')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Lead", [])):
@@ -332,7 +333,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Melodic', 'Lead')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Pad", [])):
@@ -340,7 +341,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Melodic', 'Pad')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Synth", [])):
@@ -348,7 +349,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Melodic', 'Synth')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Wind", [])):
@@ -356,7 +357,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Melodic', 'Wind')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("String", [])):
@@ -364,7 +365,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Melodic', 'String')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("BassHits", [])):
@@ -372,7 +373,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Melodic', 'Bass', 'Hits')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Riser", [])):
@@ -380,7 +381,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'FX', 'Riser')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Noise", [])):
@@ -388,7 +389,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'FX', 'Noise')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Siren", [])):
@@ -396,7 +397,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'FX', 'Siren')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Vinyl", [])):
@@ -404,7 +405,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'FX', 'Vinyl')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Impact", [])):
@@ -412,7 +413,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'FX', 'Impact')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("FX", [])):
@@ -420,7 +421,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'FX')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("DrumClap", [])):
@@ -428,7 +429,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Drum', 'Claps')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("DrumHats", [])):
@@ -436,7 +437,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Drum', 'Hats')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("DrumTom", [])):
@@ -444,7 +445,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Drum', 'Toms')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("808", [])):
@@ -452,7 +453,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Drum', '808')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("DrumPercs", [])):
@@ -460,7 +461,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Drum', 'Percussion')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Percs", [])):
@@ -468,7 +469,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Drum', 'Percussion')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("DrumHats", [])):
@@ -476,7 +477,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Drum', 'Hats')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("DrumHatsOpen", [])):
@@ -484,7 +485,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Drum', 'Hats', 'Open')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("DrumHatsClosed", [])):
@@ -492,7 +493,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Drum', 'Hats', 'Closed')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Vox", [])):
@@ -500,7 +501,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Voice', 'Vox')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Vocal Chop", [])):
@@ -508,7 +509,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Voice', 'Vocal Chop')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Vocal Arp", [])):
@@ -516,7 +517,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Voice', 'Vocal Arp')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Hooks", [])):
@@ -524,7 +525,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Voice', 'Hooks')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Screams", [])):
@@ -532,7 +533,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Voice', 'Scream')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Chants", [])):
@@ -540,7 +541,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Voice', 'Chant')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Phrases", [])):
@@ -548,7 +549,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Voice', 'Phrases')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Voice", [])):
@@ -556,7 +557,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Voice')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Atmos", [])):
@@ -564,7 +565,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Samples', 'Atmos')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 else:
@@ -581,7 +582,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Presets', 'Serum Presets', 'Bass')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Keys", [])):
@@ -589,7 +590,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Presets', 'Serum Presets', 'Keys')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Plucks", [])):
@@ -597,7 +598,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Presets', 'Serum Presets', 'Plucks')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Lead", [])):
@@ -605,7 +606,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Presets', 'Serum Presets' ,'Lead')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Synth", [])):
@@ -613,7 +614,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Presets', 'Serum Presets' ,'Synth')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Pad", [])):
@@ -621,7 +622,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Presets', 'Serum Presets' ,'Pad')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("FX", [])):
@@ -629,7 +630,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Presets', 'Serum Presets', 'FX')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Atmos", [])):
@@ -637,13 +638,13 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Presets', 'Serum Presets', 'Atmos')
                     if settings.get("Show More Console Logs"):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                 elif any(pattern in file_name for pattern in pattern_lists.get("Voice", [])):
                     total += 1
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Presets', 'Serum Presets', 'Voice')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("808", [])):
@@ -651,7 +652,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Presets', 'Serum Presets', '808')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("DrumPresets", [])):
@@ -659,7 +660,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Presets', 'Serum Presets', 'DrumPresets')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 else:
@@ -667,7 +668,7 @@ def sort_files(file_path, pattern_lists):
                     total += 1
                     num_failed += 1
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
             elif file_extension in ["nki"]:
@@ -675,7 +676,7 @@ def sort_files(file_path, pattern_lists):
                 num_succeeded += 1
                 dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Presets', 'Native Instruments')
                 if settings.get("Show More Console Logs", True):
-                    log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                    log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                 else:
                     pass
             elif file_extension in ["mid"]:
@@ -684,7 +685,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Midi', 'Drum', 'Snares')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("DrumClap", [])):
@@ -692,7 +693,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Midi', 'Drum', 'Claps')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Melodic", [])):
@@ -704,7 +705,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Midi', 'Drum', 'Toms')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("808", [])):
@@ -712,7 +713,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Midi', 'Drum', '808')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("DrumKick", [])):
@@ -720,7 +721,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Midi', 'Drum', 'Kicks')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("DrumPercs", [])):
@@ -728,7 +729,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Midi', 'Drum', 'Percussion')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("DrumShakers", [])):
@@ -736,7 +737,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Midi', 'Drum', 'Shakers')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("FX", [])):
@@ -744,7 +745,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Midi', 'FX')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("DrumLoops", [])):
@@ -752,7 +753,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Midi', 'Drum', 'Loops')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("DrumHats", [])):
@@ -760,7 +761,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Midi', 'Drum', 'Hats')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("DrumHatsOpen", [])):
@@ -768,7 +769,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Midi', 'Drum', 'Hats', 'Open')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("DrumHatsClosed", [])):
@@ -776,7 +777,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Midi', 'Drum', 'Hats', 'Closed')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Voice", [])):
@@ -784,7 +785,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Midi', 'Voice')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Bass", [])):
@@ -792,7 +793,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Midi', 'Bass')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Atmos", [])):
@@ -800,7 +801,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Midi', 'Atmos')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 else:
@@ -808,7 +809,7 @@ def sort_files(file_path, pattern_lists):
                     total += 1
                     num_failed += 1
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
             elif file_extension in ["nmsv"]:
@@ -817,7 +818,7 @@ def sort_files(file_path, pattern_lists):
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Presets', 'Massive Presets', 'Bass')
                     total += 1
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass  
                 elif any(pattern in file_name for pattern in pattern_lists.get("Plucks", [])):
@@ -825,7 +826,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Presets', 'Massive Presets', 'Plucks')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Keys", [])):
@@ -833,7 +834,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Presets', 'Massive Presets', 'Keys')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Pad", [])):
@@ -841,7 +842,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Presets', 'Massive Presets', 'Pad')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Lead", [])):
@@ -849,7 +850,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Presets', 'Massive Presets', 'Lead')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Synth", [])):
@@ -857,7 +858,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Presets', 'Massive Presets', 'Synth')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("FX", [])):
@@ -865,7 +866,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Presets', 'Massive Presets', 'FX')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Atmos", [])):
@@ -873,7 +874,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Presets', 'Massive Presets', 'Atmos')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("Voice", [])):
@@ -881,7 +882,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Presets', 'Massive Presets', 'Voice')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("808", [])):
@@ -889,7 +890,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Presets', 'Massive Presets', '808')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 elif any(pattern in file_name for pattern in pattern_lists.get("DrumPresets", [])):
@@ -897,7 +898,7 @@ def sort_files(file_path, pattern_lists):
                     num_succeeded += 1
                     dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Presets', 'Massive Presets', 'DrumPresets')
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                 else:
@@ -905,7 +906,7 @@ def sort_files(file_path, pattern_lists):
                     total += 1
                     num_succeeded += 1
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                     else:
                         pass
                         num_failed += 1
@@ -914,7 +915,7 @@ def sort_files(file_path, pattern_lists):
                 num_succeeded += 1
                 dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Projects', 'Templates')
                 if settings.get("Show More Console Logs", True):
-                    log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                    log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                 else:
                     pass
             elif file_extension in ["flp", "abl"]:
@@ -922,7 +923,7 @@ def sort_files(file_path, pattern_lists):
                 num_succeeded += 1
                 dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Projects')
                 if settings.get("Show More Console Logs", True):
-                    log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                    log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                 else:
                     pass
             elif file_extension in plugin_exts:
@@ -930,7 +931,7 @@ def sort_files(file_path, pattern_lists):
                 num_succeeded += 1
                 dest_path = os.path.join(j_paths.get('Name Of Top Library Directory'), 'Plugins')
                 if settings.get("Show More Console Logs", True):
-                    log_console(f'{file_name}', f'{seperator}', f'{dest_path}', f'{j_clrs.get("Successfully Sorted File Color")}')
+                    log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Successfully Sorted File Color'))
                 else:
                     pass
             else:
