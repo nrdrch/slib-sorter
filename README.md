@@ -48,13 +48,6 @@ Slib-Sorter -config
 ```
 
 
-
-
-
-### Suggestions
-
-
-
 ### Future additions
 - [x] Make any used path easier configurable by the user.
 - [x] Fix minor issues regarding time.

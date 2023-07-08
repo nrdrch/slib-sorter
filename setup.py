@@ -4,30 +4,7 @@ import os
 import json, importlib
 settings_folder = os.path.join(os.environ['USERPROFILE'], 'Documents', 'WindowsPowerShell', 'Scripts', 'slib_sorter')
 settings = os.path.join(settings_folder, "settings.json")
-default_config = f'''
-{{
-    "Foregroud Color 1": "white",
-    "Top Bar Color": "dark_grey",
-    "Show Top Bar": true,
-    "Top Bar": "<   Sample Library Sorter   >",
-    "Prompt Color": "dark_grey",
-    "Prompt": "$ ",
-    "Console Log Seperator": "  >>>--<>  ",
-    "Show More Console Logs": false,
-    "Show Seperator": true,
-    "Show Statistics": true,
-    "Statistics Value Color": "light_red",
-    "Max files per Dir": 50,
-    "TBPDPath": "Desktop",
-    "To Be Processed Directory": "To Be Sorted",
-    "NOFLDPath": "Desktop",
-    "Name Of Top Library Directory": "Sample Library",
-    "RFPath": "Desktop",
-    "Rejected Files": "Rejected Files",
-    "Run Shell Command On Startup": false,
-    "Command On Startup": "cls" 
-}}
-    '''
+
 def ps_script(source_file):
     
     winpro = os.path.join(os.environ['USERPROFILE'],'Documents', 'WindowsPowerShell')
@@ -48,14 +25,43 @@ def install():
         long_description = fh.read()
     if not os.path.exists(settings_file):
         with open(settings_file, 'w') as f:
+            default_config = f'''
+{{
+    "Paths": {
+        "To Be Processed Directory": "~/Desktop/To Be Processed",
+        "Name Of Top Library Directory": "~/Desktop/Sample Library",
+        "Rejected Files Directory": "~/Desktop/Rejected Files"
+    },
+    "Colors": {
+        "Foregroud Color 1": "white",
+        "Foregroud Color 2": "dark_grey",
+        "Top Title Bar Color": "white",
+        "Prompt Color": "dark_grey",
+        "Statistics Value Color": "light_red",
+        "Successfully Sorted File Color": "magenta",
+        "Unsorted File Color": "light_yellow",
+        "Rejected Filetype Color": "green"
+    },
+    "Show More Console Logs": true,
+    "Console Log Seperator": "  >>>--<>  ",
+    "Top Title Bar": "<   Sample Library Sorter   >",
+    "Prompt": "$ ",
+    "Max files per Dir": 50,
+    "Command On Startup": "cls",
+    "Run Shell Command On Startup": false,
+    "Show Top Title Bar": true,
+    "Show Statistics": true,
+    "Show Seperator": true
+}}
+''' 
             f.write(default_config)
     else:
         pass
 
     setuptools.setup(
         name="slib-sorter",
-        version="1.2.6",
-        author="Lukas Hübinger",
+        version="1.3.8",
+        author="Lukas H",
         author_email="fettkindasindauchoke@gmail.com",
         description="A Python package for sorting Sample Libraries",
         long_description=long_description,
