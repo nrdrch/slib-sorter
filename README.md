@@ -5,13 +5,13 @@
 ### Dependecies 
 #### [Python](https://www.python.org/downloads/), [termcolor 2.3.0 ](https://pypi.org/project/termcolor/)
 ### Installation 
-1. from [PyPI](https://pypi.org/)
+> from [PyPI](https://pypi.org/)
 ```
 py -m pip install --upgrade slib-sorter
 ```
-2. from GitHub 
+> from GitHub 
 ```
-git clone https://github.com/nrdrch/slib-sorter.git; python3 .\slib-sorter\src\slib-sorter.py
+git clone https://github.com/nrdrch/slib-sorter.git; python3 \slib-sorter\src\slib-sorter.py
 ```
 
 ### Usage 
@@ -25,7 +25,7 @@ Slib-Sorter
 
 
 <img src="https://raw.githubusercontent.com/nrdrch/slib-sorter/main/examples/direxample.png?token=GHSAT0AAAAAACCUPKWOJF3EUJNKTAR7NJSSZEUEOLA">
-<img examples/direxample.png>
+
 
 
 <img src="https://raw.githubusercontent.com/nrdrch/slib-sorter/main/examples/outputstatistics.png">
