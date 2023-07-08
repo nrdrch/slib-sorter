@@ -18,7 +18,10 @@ git clone https://github.com/nrdrch/slib-sorter.git; python3 \slib-sorter\src\sl
 ```
 Slib-Sorter
 ```
-
+> for other options look at:
+```
+Slib-Sorter -help
+```
 
 > If its the first time running this, it will now have created two directories on your desktop. 
 
