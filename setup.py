@@ -1,62 +1,67 @@
 import setuptools
 import shutil
 import os
-import json, importlib
+import json
+
+def ps_script(source_file):
+    winpro = os.path.join(os.environ['USERPROFILE'], 'Documents', 'WindowsPowerShell')
+    powershell_scripts_folder = os.path.join(winpro, 'Scripts', 'slib_sorter')
+    settings_file = os.path.join(powershell_scripts_folder, 'settings.json')
+    
+    if not os.path.exists(powershell_scripts_folder):
+        os.makedirs(powershell_scripts_folder)
+    
+    powershell_script_file = os.path.join(powershell_scripts_folder, 'slib_sorter.psm1')
+    
+    return settings_file
+
 settings_folder = os.path.join(os.environ['USERPROFILE'], 'Documents', 'WindowsPowerShell', 'Scripts', 'slib_sorter')
 settings = os.path.join(settings_folder, "settings.json")
 
-def ps_script(source_file):
-    
-    winpro = os.path.join(os.environ['USERPROFILE'],'Documents', 'WindowsPowerShell')
-    powershell_scripts_folder = os.path.join(winpro, 'Scripts', 'slib_sorter')
-    settings_file_ps = os.path.join(powershell_scripts_folder, 'settings.json')
-    if not os.path.exists(powershell_scripts_folder):
-        os.makedirs(powershell_scripts_folder)
-    else:
-        pass
-    powershell_script_file = os.path.join(powershell_scripts_folder, 'slib_sorter' + ".psm1")
-    settings_file = os.path.join(powershell_scripts_folder, 'settings.json')
-    return settings_file_ps
-settings_file = settings
-settings_source = 'settings.json'
-
-def install():
-    with open("README.md", "r", encoding="utf-8") as fh:
-        long_description = fh.read()
-    if not os.path.exists(settings_file):
-        with open(settings_file, 'w') as f:
-            default_config = f'''
-{{
+default_config = '''
+{
     "Paths": {
         "To Be Processed Directory": "~/Desktop/To Be Processed",
         "Name Of Top Library Directory": "~/Desktop/Sample Library",
-        "Rejected Files Directory": "~/Desktop/Rejected Files"
+        "Rejected Filetype Directory": "~/Desktop/Rejected Files"
     },
     "Colors": {
-        "Foregroud Color 1": "white",
+        "Foreground Color 1": "white",
+        "Foreground Color 2": "dark_grey",
         "Top Title Bar Color": "dark_grey",
         "Prompt Color": "dark_grey",
-        "Statistics Value Color": "light_red"
+        "Statistics Value Color": "light_red",
+        "Successfully Sorted File Color": "light_green",
+        "Unsorted File Color": "light_yellow",
+        "Rejected Filetype Color": "red"
     },
-    "Show Top Title Bar": true,
-    "Show Statistics": true,
-    "Show More Console Logs": false,
-    "Show Seperator": true,
+    "Show More Console Logs": true,
     "Console Log Seperator": "  >>>--<>  ",
     "Top Title Bar": "<   Sample Library Sorter   >",
     "Prompt": "$ ",
     "Max files per Dir": 50,
+    "Command On Startup": "cls",
     "Run Shell Command On Startup": false,
-    "Command On Startup": "cls" 
-}}
-''' 
-        f.write(default_config)
-    else:
-        pass
+    "Show Top Title Bar": true,
+    "Show Statistics": true,
+    "Show Seperator": true
+}
+'''
 
+def install():
+    with open("README.md", "r", encoding="utf-8") as fh:
+        long_description = fh.read()
+    
+    if not os.path.exists(settings_folder):
+        os.makedirs(settings_folder)
+    
+    if not os.path.exists(settings):
+        with open(settings, 'w') as f:
+            f.write(default_config)
+    
     setuptools.setup(
         name="slib-sorter",
-        version="1.4.0",
+        version="1.6.5",
         author="Lukas H",
         author_email="fettkindasindauchoke@gmail.com",
         description="A Python package for sorting Sample Libraries",
@@ -78,12 +83,6 @@ def install():
             "Operating System :: Microsoft :: Windows :: Windows 10"
         ],
     )
-
-    if not os.path.exists(settings_file):
-        ps_script(settings_source)
-    else:
-        pass
-    
 
 def __setup__():
     install()

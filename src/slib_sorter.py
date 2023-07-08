@@ -1,55 +1,63 @@
-import os, shutil, stat, argparse
-import time
-import json
+import os, shutil, stat, tempfile, json, ctypes, argparse, time, sys, subprocess
 from termcolor import colored
-import os, shutil, stat, tempfile, json, ctypes, importlib
-
-
-
-def join_corrected_paths(settings):
-    # Load the settings from the file
-    with open(settings, "r") as file:
-        settings = json.load(file)
-
-    paths = settings.get('Paths', {})
-    joined_paths = {}
-
-    for key, path in paths.items():
-        corrected_path = path.replace("/", "\\")
-        more_corrected_path = corrected_path.replace("~", os.environ['USERPROFILE'])
-        joined_paths[key] = more_corrected_path
-        check_dir(more_corrected_path)
-    return joined_paths 
-def clr_get(settings):
-    settings_folder = os.path.join(os.environ['USERPROFILE'], 'Documents', 'WindowsPowerShell', 'Scripts', 'slib_sorter')
-    settings = os.path.join(settings_folder, "settings.json")
-    with open(settings, "r") as file:
-        settings = json.load(file)
-    Colors = settings.get('Colors', {})
-    Parsed_Colors = {}
-    for key, value in Colors.items():
-        Parsed_Colors[key] = value
-    return Parsed_Colors
-
 def path_finder(levels_up=0):
     current_dir = os.path.abspath(os.path.dirname(__file__))
     if levels_up > 0:
         for _ in range(levels_up):
             current_dir = os.path.dirname(current_dir)
     return current_dir
-#settings = os.path.join(path_finder(0), 'settings.json')
+settings = os.path.join(os.environ['USERPROFILE'], 'Documents', 'WindowsPowerShell', 'Scripts', 'slib_sorter', 'settings.json')
+def check_file(*paths):
+    for path in paths:
+        if not os.path.exists(path):
+            open(path, 'w').close()
+if os.path.exists(settings):
+    pass
+else:
+    check_file(settings)
+
+
 def check_dir(*paths):
     for path in paths:
         if not os.path.exists(path):
             os.makedirs(path)
-        else:
-            pass
+
+
+def join_corrected_paths(settings):
+    settings_folder = os.path.join(os.environ['USERPROFILE'], 'Documents', 'WindowsPowerShell', 'Scripts', 'slib_sorter')
+    settings = os.path.join(settings_folder, 'settings.json')
+    with open(settings, "r") as file:
+        settings = json.load(file)
+
+    paths = settings.get('Paths', {})
+    joined_paths = {}
+    
+    for key, path in paths.items():
+        corrected_path = path.replace("/", "\\")
+        more_corrected_path = corrected_path.replace("~", os.environ['USERPROFILE'])
+        joined_paths[key] = more_corrected_path
+        check_dir(more_corrected_path)
+    return joined_paths 
+settings_folder = os.path.join(os.environ['USERPROFILE'], 'Documents', 'WindowsPowerShell', 'Scripts', 'slib_sorter')
+settings = os.path.join(settings_folder, 'settings.json')
+with open(settings, "r") as file:
+        settings = json.load(file)
+def clr_get(settings):
+    with open(settings, "r") as file:
+        settings = json.load(file)
+    clors = settings.get('Colors', {})
+    parsed_clors = {}
+    for key, value in clors.items():
+        parsed_clors[key] = value
+    return parsed_clors
+#settings = os.path.join(path_finder(0), 'settings.json')
 settings_folder = os.path.join(os.environ['USERPROFILE'], 'Documents', 'WindowsPowerShell', 'Scripts', 'slib_sorter')
 settings = os.path.join(settings_folder, "settings.json")
 j_clrs = clr_get(settings)
 j_paths = join_corrected_paths(settings)
 with open(settings, 'r') as file:
     settings = json.load(file)
+
 def log_message(message, color, centered=False, newline=True):
     if centered:
         message = message.center(119)
@@ -59,8 +67,8 @@ def log_message(message, color, centered=False, newline=True):
 def log_console(file_name, seperator, dest_path, color):
     if settings.get("Show More Console Logs", True):
         log_message(f'{file_name}', f'{color}', False, False)
-        log_message(f'{seperator}', f'{j_clrs.get("Foreground Color 2")}', False, False)
-        log_message(f' {dest_path}', f'{j_clrs.get("Foreground Color 1")}', False, True)
+        log_message(f'{seperator}', j_clrs.get('Foreground Color 2'), False, False)
+        log_message(f'{dest_path}', j_clrs.get('Foreground Color 1'), False, True)
     else:
         pass
 
@@ -155,9 +163,10 @@ def temp_path_file(temp_content):
             file.write(temp_content)
     return file_path
 current_location = path_finder(0)
+
 source_file = os.path.join(current_location, 'slib_sorter.py')
 settings_f = os.path.join(os.environ['USERPROFILE'], 'Documents', 'WindowsPowerShell', 'Scripts', 'slib_sorter', 'settings.json')
-temp_content = "\nSorted Library Location:        "+ f"{j_paths.get('Name Of Top Library Directory')}"+ "\nSettings Location:     "+ f"{settings_f}"+ "\nPyhton Script Location:    " f"{os.path.join(current_location, 'slib_sorter.py')}"+ "\nTo Be Sorted Location:    " f"{j_paths.get('To Be Processed Directory')}"+ "\nRejected Files Location:     " f"{j_paths.get('Rejected Files Directory')}"
+temp_content = "\nSorted Library Location:        "+ f"{j_paths.get('Name Of Top Library Directory')}"+ "\nSettings Location:     "+ f"{settings_f}"+ "\nPyhton Script Location:    " f"{os.path.join(current_location, 'slib_sorter.py')}"+ "\nTo Be Sorted Location:    " f"{j_paths.get('To Be Processed Directory')}"+ "\nRejected Files Location:     " f"{j_paths.get('Rejected Filetype Directory')}"
 
 
 start_time = time.time()
@@ -165,8 +174,9 @@ start_time = time.time()
 
 
 #settings = os.path.join(path_finder(0), 'settings.json')
-folder_path = path2
-check_dir(path1, path2)
+
+check_dir(path1)
+check_dir(path2)
 if settings.get("Run Shell Command On Startup", True):
     CmdOnStartup = settings.get("Command On Startup")
     os.system(CmdOnStartup)
@@ -221,7 +231,7 @@ def sort_files(file_path, pattern_lists):
     num_failed = 0
     num_failed2 = 0
     num_succeeded = 0
-    rejected_unsorted_path = j_paths.get('Rejected Files Directory')
+    rejected_unsorted_path = j_paths.get('Rejected Filetype Directory')
     check_dir(rejected_unsorted_path)
     audio_exts = ["wav", "mp3", "aif", "aiff", "flac", "ogg", "WAV", "m4a"]
     plugin_exts = ["vst", "aax", "dll", "vst3"]
@@ -573,7 +583,7 @@ def sort_files(file_path, pattern_lists):
                     total += 1
                     num_failed += 1
                     if settings.get("Show More Console Logs", True):
-                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Unsorted File Color'))
+                        log_console(f'{file_name}', f'{seperator}', f'{dest_path}', j_clrs.get('Unsorted File Color'))                                                                      
                     else:
                         pass   
             elif file_extension in ["fxp"]:
@@ -939,7 +949,7 @@ def sort_files(file_path, pattern_lists):
                 total += 1
                 num_failed2 += 1
                 if settings.get("Show More Console Logs", True):
-                    log_console(f'{file_name}', f'{seperator}', f'{rejected_unsorted_path}', j_clrs.get('Rejected Filetype Color'))
+                    log_console(f'{file_name}', f'{seperator}', f'{rejected_unsorted_path}', j_clrs.get('Rejected Filetype Color'))               
                 else:
                     pass
             organize_files_by_extension(rejected_unsorted_path)
@@ -957,45 +967,41 @@ def sort_files(file_path, pattern_lists):
     check_dir(path1)
     if settings.get("Show Top Title Bar", True):
         bar = settings.get("Top Title Bar")
-        log_message(bar, f'{j_clrs.get("Top Title Bar Color")}', True, True)
+        log_message(bar, j_clrs.get('Top Title Bar Color'), True, True)
     else:
         pass
-    
     if settings.get("Show Statistics", True):
-        log_message(prompt1, f'{j_clrs.get("Prompt Color")}', False, False)
-        log_message(f'sorted by name & file type:   ', f'{j_clrs.get("Foregroud Color 1")}', False, False)
-        log_message(f' {num_succeeded}', f'{j_clrs.get("Successfully Sorted File Color")}', False, False)
-        log_message(prompt1, f'{j_clrs.get("Prompt Color")}', False, False)
-        log_message(f'sorted only by file type: ', f'{j_clrs.get("Foregroud Color 1")}', False, False)
-        log_message(f' {num_failed}', f'{j_clrs.get("Unsorted File Color")}', False, False)
-        log_message(prompt1, f'{j_clrs.get("Prompt Color")}', False, False)
-        log_message(f'rejected file types: ', f'{j_clrs.get("Foregroud Color 1")}', False, False)
-        log_message(f' {num_failed2}', f'{j_clrs.get("Rejected Filetype Color")}', False, False)
-        log_message(f'      {total}', f'{j_clrs.get("Statistics Value Color")}', False, False)
-        log_message(f' files processed in ', f'{j_clrs.get("Foreground Color 2")}', False, False)
-        log_message(f'{elapsed_time:.2f}', f'{j_clrs.get("Statistics Value Color")}', False, False)
-        log_message(f' seconds', f'{j_clrs.get("Foreground Color 1")}', False, True)
+        log_message(prompt1, j_clrs.get('Prompt Color'), False, False)
+        log_message(f'sorted by name & file type:   ', j_clrs.get('Foreground Color 1'), False, False)
+        log_message(f' {num_succeeded}', j_clrs.get('Successfully Sorted File Color'), False, True)
+        log_message(prompt1, j_clrs.get('Prompt Color'), False, False)
+        log_message(f'sorted only by file type: ', j_clrs.get('Foreground Color 1'), False, False)
+        log_message(f' {num_failed}', j_clrs.get('Unsorted File Color'), False, True)
+        log_message(prompt1, j_clrs.get('Prompt Color'), False, False)
+        log_message(f'rejected file types: ', j_clrs.get('Foreground Color 1'), False, False)
+        log_message(f' {num_failed2}', j_clrs.get('Rejected Filetype Color'), False, True)
+        log_message(f'      {total}', j_clrs.get('Statistics Value Color'), False, False)
+        log_message(f' files processed in ', j_clrs.get('Foreground Color 2'), False, False)
+        log_message(f'{elapsed_time:.2f}', j_clrs.get('Statistics Value Color'), False, False)
+        log_message(f' seconds', j_clrs.get('Foreground Color 1'), False, True)
         maxfile = settings.get('Max files per Dir')
         split_files_in_subdirectories(path2, max_files_per_dir=maxfile)
-        file_count, dir_count, total_size_mb, total_size_gb = count_files_in_directory(f'{path2}')
-        log_message(f'          in ', f'{j_clrs.get("Foreground Color 2")}', False, False)
-        log_message(f'{settings.get("Name Of Top Library Directory")}', f'{j_clrs.get("Statistics Value Color")}', False, True)
-        log_message(f'              files', f'{j_clrs.get("Foreground Color 2")}', False, False)
-        log_message(f' {file_count}', f'{j_clrs.get("Statistics Value Color")}', False, True)
-        log_message(f'                  subdirectories', f'{j_clrs.get("Foreground Color 2")}', False, False)
-        log_message(f' {dir_count}', f'{j_clrs.get("Statistics Value Color")}', False, True)
-        log_message(f'                      size', f'{j_clrs.get("Foreground Color 2")}', False, False)
-        log_message(f' {total_size_mb:.2f}', f'{j_clrs.get("Statistics Value Color")}', False, False)
-        log_message(f' mb ', f'{j_clrs.get("Foreground Color 1")}', False, False)
-        log_message(f'or ', f'{j_clrs.get("Foreground Color 2")}', False, False)
-        log_message(f'{total_size_gb:.2f}', f'{j_clrs.get("Statistics Value Color")}', False, False)
-        log_message(f' gb', f'{j_clrs.get("Foreground Color 1")}', False, False)
-        log_message(f'', f'{j_clrs.get("Foreground Color 1")}', False, True)
+        file_count, dir_count, total_size_mb, total_size_gb = count_files_in_directory(path2)
+        log_message(f'          in ', j_clrs.get('Foreground Color 2'), False, False)
+        log_message(j_paths.get('Name Of Top Library Directory'), j_clrs.get('Statistics Value Color'), False, True)
+        log_message(f'              files', j_clrs.get('Foreground Color 2'), False, False)
+        log_message(f' {file_count}', j_clrs.get('Statistics Value Color'), False, True)
+        log_message(f'                  subdirectories', j_clrs.get('Foreground Color 2'), False, False)
+        log_message(f' {dir_count}', j_clrs.get('Statistics Value Color'), False, True)
+        log_message(f'                      size', j_clrs.get('Foreground Color 2'), False, False)
+        log_message(f' {total_size_mb:.2f}', j_clrs.get('Statistics Value Color'), False, False)
+        log_message(f' mb ', j_clrs.get('Foreground Color 1'), False, False)
+        log_message(f'or ', j_clrs.get('Foreground Color 2'), False, False)
+        log_message(f'{total_size_gb:.2f}', j_clrs.get('Statistics Value Color'), False, False)
+        log_message(f' gb', j_clrs.get('Foreground Color 1'), False, False)
+        log_message(f'', j_clrs.get('Foreground Color 1'), False, True)
     else:
         pass
-    def remove_readonly(func, path, _):
-        os.chmod(path, stat.S_IWRITE)
-        func(path)
     shutil.rmtree(path1, onerror=remove_readonly)
     check_dir(path1)
 def print_help_message():
@@ -1015,21 +1021,21 @@ def print_help_message():
         else:
             pass
         bar = settings.get("Top Title Bar")
-        log_message(bar, f'{j_clrs.get("Top Title Bar Color")}', True, True)
-        log_message(temp_content, f'{j_clrs.get("Foregroud Color 1")}', False, True)
+        log_message(bar, j_clrs.get('Top Title Bar Color'), True, True)
+        log_message(temp_content, j_clrs.get('Foreground Color 1'), False, True)
     elif args.colors:
         if settings.get("Run Shell Command On Startup", True):
             os.system(CmdOnStartup)
         else:
             pass
         bar = settings.get("Top Title Bar")
-        log_message(bar, f'{j_clrs.get("Top Title Bar Color")}', True, True)
+        log_message(bar, j_clrs.get('Top Title Bar Color'), True, True)
         clist = {
             "Colors": ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white', 'light_grey', 'dark_grey', 'light_red', 'light_green', 'light_yellow', 'light_blue', 'light_magenta', 'light_cyan']
         }
         colors = clist["Colors"]
-        log_message("Possible Color Settings", f'{j_clrs.get("Statistics Value Color")}', False, False)
-        log_message(':', f'{j_clrs.get("Foregroud Color 1")}', False, True)
+        log_message("Possible Color Settings", j_clrs.get('Statistics Value Color'), False, False)
+        log_message(':', j_clrs.get('Foreground Color 1'), False, True)
         for color in colors:
             log_message(spacer+ color, f'{color}', False, True)
     elif args.help:
@@ -1038,22 +1044,22 @@ def print_help_message():
         else:
             pass
         bar = settings.get("Top Title Bar")
-        log_message(bar, f'{j_clrs.get("Top Title Bar Color")}', True, True)
-        log_message('Help', f'{j_clrs.get("Statistics Value Color")}', False, False)
-        log_message(':', f'{j_clrs.get("Foregroud Color 1")}', False, True)
-        log_message('           -paths '+ f'{spacer}', f'{j_clrs.get("Foregroud Color 1")}', False, False)
-        log_message('Displays Paths', f'{j_clrs.get("Statistics Value Color")}', False, True)
-        log_message('           -colors'+ f'{spacer}', f'{j_clrs.get("Foregroud Color 1")}', False, False)
-        log_message('Displays Possible Color Settings', f'{j_clrs.get("Statistics Value Color")}', False, True)
-        log_message('           -config'+ f'{spacer}', f'{j_clrs.get("Foregroud Color 1")}', False, False)
-        log_message('Launch Config File', f'{j_clrs.get("Statistics Value Color")}', False, True)
-        log_message('           -help  '+ f'{spacer}', f'{j_clrs.get("Foregroud Color 1")}', False, False)
-        log_message('Displays Help', f'{j_clrs.get("Statistics Value Color")}', False, True)
+        log_message(bar, j_clrs.get('Top Title Bar Color'), True, True)
+        log_message('Help', j_clrs.get('Statistics Value Color'), False, False)
+        log_message(':', j_clrs.get('Foreground Color 1'), False, True)
+        log_message('           -paths '+ f'{spacer}', j_clrs.get('Foreground Color 1'), False, False)
+        log_message('Displays Paths', j_clrs.get('Statistics Value Color'), False, True)
+        log_message('           -colors'+ f'{spacer}', j_clrs.get('Foreground Color 1'), False, False)
+        log_message('Displays Possible Color Settings', j_clrs.get('Statistics Value Color'), False, True)
+        log_message('           -config'+ f'{spacer}', j_clrs.get('Foreground Color 1'), False, False)
+        log_message('Launch Config File', j_clrs.get('Statistics Value Color'), False, True)
+        log_message('           -help  '+ f'{spacer}', j_clrs.get('Foreground Color 1'), False, False)
+        log_message('Displays Help', j_clrs.get('Statistics Value Color'), False, True)
     elif args.config:
         settingsfile = settings_f
         cmd = "Start "+ f'{settingsfile}'
         os.system(cmd)
     else:
-        sort_files(path1, pattern_lists) 
+        sort_files(file_path, pattern_lists) 
 def __main__():
     print_help_message()
