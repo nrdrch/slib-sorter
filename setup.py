@@ -34,33 +34,29 @@ def install():
     },
     "Colors": {
         "Foregroud Color 1": "white",
-        "Foregroud Color 2": "dark_grey",
-        "Top Title Bar Color": "white",
+        "Top Title Bar Color": "dark_grey",
         "Prompt Color": "dark_grey",
-        "Statistics Value Color": "light_red",
-        "Successfully Sorted File Color": "magenta",
-        "Unsorted File Color": "light_yellow",
-        "Rejected Filetype Color": "green"
+        "Statistics Value Color": "light_red"
     },
-    "Show More Console Logs": true,
+    "Show Top Title Bar": true,
+    "Show Statistics": true,
+    "Show More Console Logs": false,
+    "Show Seperator": true,
     "Console Log Seperator": "  >>>--<>  ",
     "Top Title Bar": "<   Sample Library Sorter   >",
     "Prompt": "$ ",
     "Max files per Dir": 50,
-    "Command On Startup": "cls",
     "Run Shell Command On Startup": false,
-    "Show Top Title Bar": true,
-    "Show Statistics": true,
-    "Show Seperator": true
+    "Command On Startup": "cls" 
 }}
 ''' 
-            f.write(default_config)
+        f.write(default_config)
     else:
         pass
 
     setuptools.setup(
         name="slib-sorter",
-        version="1.3.8",
+        version="1.3.9",
         author="Lukas H",
         author_email="fettkindasindauchoke@gmail.com",
         description="A Python package for sorting Sample Libraries",
