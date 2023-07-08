@@ -2,22 +2,21 @@
 ###### *for now only meant to run on Windows10
 > This script allows you to quickly sort a massive amount of files, any kind you might find in your Sample Library as a Music Producer.
 ##### Audio, Project Files & Plugin Presets (for now just Serum and Massive)
-### Dependecies
-#### 
-[Python](https://www.python.org/downloads/), [termcolor 2.3.0 ](https://pypi.org/project/termcolor/)
-```
-python3 -m pip install --upgrade termcolor
-```
+### Dependecies 
+#### [Python](https://www.python.org/downloads/), [termcolor 2.3.0 ](https://pypi.org/project/termcolor/)
 ### Installation 
+1. from [PyPI](https://pypi.org/)
+```
+py -m pip install --upgrade slib-sorter
+```
+2. from GitHub 
 ```
 git clone https://github.com/nrdrch/slib-sorter.git; python3 .\slib-sorter\src\slib-sorter.py
 ```
 
 ### Usage 
-1. Restart your PowerShell.
-2. Run:
 ```
-Start-Sorter
+Slib-Sorter
 ```
 
 
@@ -36,7 +35,7 @@ Start-Sorter
 $home\Documents\slib-sorter\settings.json
 ```
 ```
-Start-Sorter -config
+Slib-Sorter -config
 ```
 
 
