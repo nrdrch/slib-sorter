@@ -15,17 +15,13 @@ def check_dir(*paths):
     for path in paths:
         if not os.path.exists(path):
             os.makedirs(path)
+        else:
+            pass
 settings_folder = os.path.join(os.environ['USERPROFILE'], 'Documents', 'WindowsPowerShell', 'Scripts', 'slib_sorter')
 settings = os.path.join(settings_folder, "settings.json")
-#def check_settings():
-#    settings_folder = os.path.join(os.environ['USERPROFILE'], 'Documents', 'WindowsPowerShell', 'Scripts', 'slib_sorter')
-#    settings_file = os.path.join(settings_folder, "settings.json")
-#
-#    
-#    if not os.path.exists(settings_folder):
-#        os.makedirs(settings_folder)
-#    with open(settings_file, 'w') as file:
-#        file.write(default_config)
+with open(settings, 'r') as file:
+    settings = json.load(file)
+
 def log_message(message, color, centered=False, newline=True):
     if centered:
         message = message.center(119)
@@ -39,26 +35,6 @@ def log_console(file_name, seperator, dest_path, color):
     else:
         pass
 
-def change_folder_icon(folder_path, icon_path):
-    if not os.path.exists(folder_path):
-        print("Folder does not exist.")
-        return
-    folder_path = os.path.abspath(folder_path)
-    try:
-        ini_path = os.path.join(folder_path, "desktop.ini")
-        with open(ini_path, "w") as ini_file:
-            ini_file.write("[.ShellClassInfo]\n")
-            ini_file.write(f"IconFile={icon_path}\n")
-            ini_file.write("IconIndex=0\n")
-        ctypes.windll.kernel32.SetFileAttributesW(ini_path, 0x2 | 0x4)
-        ctypes.windll.shell32.SHChangeNotify(0x08000000, 0x0000, None, None)
-        print("Folder icon changed successfully.")
-    except Exception as e:
-        print(f"An error occurred: {str(e)}")
-
-
-with open(settings, 'r') as file:
-    settings = json.load(file)
 
 def organize_files_by_extension(path):
     if not os.path.isdir(path):
@@ -150,12 +126,10 @@ def temp_path_file(temp_content):
 start_time = time.time()
 current_location = path_finder(0)
 source_file = os.path.join(current_location, 'slib_sorter.py')
-icon_path = os.path.join(path_finder(1), 'examples', 'icn.ico')
-
 settings_f = os.path.join(os.environ['USERPROFILE'], 'Documents', 'WindowsPowerShell', 'Scripts', 'slib_sorter', 'settings.json')
+
 #settings = os.path.join(path_finder(0), 'settings.json')
-with open(settings_f, 'r') as file:
-    settings_f = json.load(file)
+
 file_path = path1 = os.path.join(os.environ['USERPROFILE'], settings.get('TBPDPath'), settings.get('To Be Processed Directory'))
 path2 = os.path.join(os.environ['USERPROFILE'], settings.get('NOFLDPath'), settings.get("Name Of Top Library Directory"))
 folder_path = path2
@@ -1040,10 +1014,9 @@ def print_help_message():
         log_message('Displays Help', f'{settings.get("Statistics Value Color")}', False, True)
     elif args.config:
         settingsfile = settings_f
-        cmd = "Start "+ settingsfile
+        cmd = "Start "+ f'{settingsfile}'
         os.system(cmd)
     else:
         sort_files(path1, pattern_lists) 
 def __main__():
     print_help_message()
-__main__()

@@ -4,31 +4,7 @@ import os
 import json, importlib
 settings_folder = os.path.join(os.environ['USERPROFILE'], 'Documents', 'WindowsPowerShell', 'Scripts', 'slib_sorter')
 settings = os.path.join(settings_folder, "settings.json")
-def ps_script(source_file):
-    winpro = os.path.join(os.environ['USERPROFILE'],'Documents', 'WindowsPowerShell')
-    powershell_scripts_folder = os.path.join(winpro, 'Scripts', 'slib_sorter')
-    if not os.path.exists(powershell_scripts_folder):
-        os.makedirs(powershell_scripts_folder)
-    powershell_script_file = os.path.join(powershell_scripts_folder, 'slib_sorter' + ".psm1")
-    settings_file = os.path.join(powershell_scripts_folder, 'settings.json')
-    script_content = f'''
-function Start-Sorter {{
-    [CmdletBinding()]
-    param(
-        [Parameter(ValueFromRemainingArguments=$true)]
-        [string]$CustomInput
-    )
-    $argsString = $CustomInput -join "' '"
-    $pythonScript = '{source_file}'
-    python3 $pythonScript $argsString
-}}
-    '''
-    #with open(powershell_script_file, 'a') as f:
-    #    f.write(script_content)
-    
-    if not os.path.exists(settings_folder):
-        os.makedirs(settings_folder)
-    default_config = f'''
+default_config = f'''
 {{
     "Foregroud Color 1": "white",
     "Top Bar Color": "dark_grey",
@@ -52,45 +28,33 @@ function Start-Sorter {{
     "Command On Startup": "cls" 
 }}
     '''
-    if not os.path.exists(settings):
-        with open(settings, 'w') as f:
-            f.write(default_config)
+def ps_script(source_file):
+    
+    winpro = os.path.join(os.environ['USERPROFILE'],'Documents', 'WindowsPowerShell')
+    powershell_scripts_folder = os.path.join(winpro, 'Scripts', 'slib_sorter')
+    settings_file_ps = os.path.join(powershell_scripts_folder, 'settings.json')
+    if not os.path.exists(powershell_scripts_folder):
+        os.makedirs(powershell_scripts_folder)
     else:
         pass
-    with open(settings, 'r') as file:
-        settings = json.load(file)
-    settings = settings_file
-    #profile_path = os.path.expanduser("~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1")
-    #with open(profile_path, 'r') as f:
-    #    profile_content = f.read()
-    #    if f"Import-Module -DisableNameChecking \"{powershell_script_file}\"" in profile_content:
-    #        pass
-    #    else:
-    #        with open(profile_path, 'a') as f:
-    #            f.write(f"\nImport-Module -DisableNameChecking \"{powershell_script_file}\"")
-    try:
-        if settings.get("Run Shell Command On Startup", True):
-            CmdOnStartup = settings.get("Command On Startup")
-            os.system(CmdOnStartup)
-        else:
-            pass
-    except:
-        winpro = os.path.join(os.environ['USERPROFILE'],'Documents', 'WindowsPowerShell')
-        powershell_scripts_folder = os.path.join(winpro, 'Scripts', 'slib_sorter')
-        
-        importlib.reload(settings)
-        #setupfile = os.path.join(path_finder(0), 'setup.py')
+    powershell_script_file = os.path.join(powershell_scripts_folder, 'slib_sorter' + ".psm1")
+    settings_file = os.path.join(powershell_scripts_folder, 'settings.json')
+    return settings_file_ps
+settings_file = settings
+settings_source = 'settings.json'
 
-
-
-current_location = os.path.abspath(os.path.dirname(__file__))
 def install():
     with open("README.md", "r", encoding="utf-8") as fh:
         long_description = fh.read()
+    if not os.path.exists(settings_file):
+        with open(settings_file, 'w') as f:
+            f.write(default_config)
+    else:
+        pass
 
     setuptools.setup(
         name="slib-sorter",
-        version="1.2.2",
+        version="1.2.6",
         author="Lukas Hübinger",
         author_email="fettkindasindauchoke@gmail.com",
         description="A Python package for sorting Sample Libraries",
@@ -112,13 +76,14 @@ def install():
             "Operating System :: Microsoft :: Windows :: Windows 10"
         ],
     )
-    ps_script(os.path.join(current_location, "src", "slib_sorter.py"))
+
+    if not os.path.exists(settings_file):
+        ps_script(settings_source)
+    else:
+        pass
     
-def reload():
-    importlib.reload(settings)
-def __main__():
-    try:
-        install()
-    except:
-        reload()
-__main__()
+
+def __setup__():
+    install()
+
+__setup__()

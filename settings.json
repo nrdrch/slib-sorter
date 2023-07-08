@@ -1,4 +1,5 @@
-{   
+
+{
     "Foregroud Color 1": "white",
     "Top Bar Color": "dark_grey",
     "Show Top Bar": true,
@@ -17,6 +18,7 @@
     "Name Of Top Library Directory": "Sample Library",
     "RFPath": "Desktop",
     "Rejected Files": "Rejected Files",
-    "Run Shell Command On Startup": false, 
-    "Command On Startup": "cls"
+    "Run Shell Command On Startup": false,
+    "Command On Startup": "cls" 
 }
+    
