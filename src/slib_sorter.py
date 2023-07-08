@@ -15,23 +15,17 @@ if os.path.exists(settings):
     pass
 else:
     check_file(settings)
-
-
 def check_dir(*paths):
     for path in paths:
         if not os.path.exists(path):
             os.makedirs(path)
-
-
 def join_corrected_paths(settings):
     settings_folder = os.path.join(os.environ['USERPROFILE'], 'Documents', 'WindowsPowerShell', 'Scripts', 'slib_sorter')
     settings = os.path.join(settings_folder, 'settings.json')
     with open(settings, "r") as file:
         settings = json.load(file)
-
     paths = settings.get('Paths', {})
     joined_paths = {}
-    
     for key, path in paths.items():
         corrected_path = path.replace("/", "\\")
         more_corrected_path = corrected_path.replace("~", os.environ['USERPROFILE'])
@@ -50,29 +44,24 @@ def clr_get(settings):
     for key, value in clors.items():
         parsed_clors[key] = value
     return parsed_clors
-#settings = os.path.join(path_finder(0), 'settings.json')
 settings_folder = os.path.join(os.environ['USERPROFILE'], 'Documents', 'WindowsPowerShell', 'Scripts', 'slib_sorter')
 settings = os.path.join(settings_folder, "settings.json")
 j_clrs = clr_get(settings)
 j_paths = join_corrected_paths(settings)
 with open(settings, 'r') as file:
     settings = json.load(file)
-
 def log_message(message, color, centered=False, newline=True):
     if centered:
         message = message.center(119)
     end = "\n" if newline else ""
     print(colored(message, color), end=end)
-
 def log_console(file_name, seperator, dest_path, color):
-    if settings.get("Show More Console Logs", True):
+    if settings.get('Show More Console Logs', True):
         log_message(f'{file_name}', f'{color}', False, False)
         log_message(f'{seperator}', j_clrs.get('Foreground Color 2'), False, False)
-        log_message(f'{dest_path}', j_clrs.get('Foreground Color 1'), False, True)
+        log_message(f'{dest_path}', 'white', False, True)
     else:
         pass
-
-
 def organize_files_by_extension(path):
     if not os.path.isdir(path):
         raise Exception("The path provided is not a directory.")
@@ -118,13 +107,8 @@ def remove_directory_tree(path):
     except OSError as error:
         os.chmod(path, stat.S_IWRITE)
         os.remove(path)
-
 file_path = path1 = j_paths.get('To Be Processed Directory')
-
-
 path2 = j_paths.get('Name Of Top Library Directory')
-
-
 def split_files_in_subdirectories(path2, max_files_per_dir=50):
     for root, dirs, files in os.walk(path2):
         if root == path2:
@@ -163,18 +147,10 @@ def temp_path_file(temp_content):
             file.write(temp_content)
     return file_path
 current_location = path_finder(0)
-
 source_file = os.path.join(current_location, 'slib_sorter.py')
 settings_f = os.path.join(os.environ['USERPROFILE'], 'Documents', 'WindowsPowerShell', 'Scripts', 'slib_sorter', 'settings.json')
-temp_content = "\nSorted Library Location:        "+ f"{j_paths.get('Name Of Top Library Directory')}"+ "\nSettings Location:     "+ f"{settings_f}"+ "\nPyhton Script Location:    " f"{os.path.join(current_location, 'slib_sorter.py')}"+ "\nTo Be Sorted Location:    " f"{j_paths.get('To Be Processed Directory')}"+ "\nRejected Files Location:     " f"{j_paths.get('Rejected Filetype Directory')}"
-
-
+temp_content = "\nSorted Library Location:  " + f"{j_paths.get('Name Of Top Library Directory')}" + "\nSettings Location:        " + f"{settings_f}" + "\nPyhton Script Location:   " + f"{os.path.join(current_location, 'slib_sorter.py')}" + "\nTo Be Sorted Location:    " + f"{j_paths.get('To Be Processed Directory')}" + "\nRejected Files Location:  " + f"{j_paths.get('Rejected Filetype Directory')}"
 start_time = time.time()
-
-
-
-#settings = os.path.join(path_finder(0), 'settings.json')
-
 check_dir(path1)
 check_dir(path2)
 if settings.get("Run Shell Command On Startup", True):
@@ -967,7 +943,7 @@ def sort_files(file_path, pattern_lists):
     check_dir(path1)
     if settings.get("Show Top Title Bar", True):
         bar = settings.get("Top Title Bar")
-        log_message(bar, j_clrs.get('Top Title Bar Color'), True, True)
+        log_message(bar, j_clrs.get('Top Title Bar Color'), False, True)
     else:
         pass
     if settings.get("Show Statistics", True):
@@ -1007,7 +983,7 @@ def sort_files(file_path, pattern_lists):
 def print_help_message():
     parser = argparse.ArgumentParser()
     parser.add_argument("-paths", action="store_true")
-    parser.add_argument("-help", action="store_true")
+    parser.add_argument("-help" , action="store_true")
     parser.add_argument("-colors", action="store_true")
     parser.add_argument("-config", action="store_true")
     temp_file_path = temp_path_file(temp_content)
@@ -1021,7 +997,7 @@ def print_help_message():
         else:
             pass
         bar = settings.get("Top Title Bar")
-        log_message(bar, j_clrs.get('Top Title Bar Color'), True, True)
+        log_message(bar, j_clrs.get('Top Title Bar Color'), False, False)
         log_message(temp_content, j_clrs.get('Foreground Color 1'), False, True)
     elif args.colors:
         if settings.get("Run Shell Command On Startup", True):
@@ -1029,7 +1005,7 @@ def print_help_message():
         else:
             pass
         bar = settings.get("Top Title Bar")
-        log_message(bar, j_clrs.get('Top Title Bar Color'), True, True)
+        log_message(bar, j_clrs.get('Top Title Bar Color'), False, True)
         clist = {
             "Colors": ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white', 'light_grey', 'dark_grey', 'light_red', 'light_green', 'light_yellow', 'light_blue', 'light_magenta', 'light_cyan']
         }
@@ -1044,22 +1020,27 @@ def print_help_message():
         else:
             pass
         bar = settings.get("Top Title Bar")
-        log_message(bar, j_clrs.get('Top Title Bar Color'), True, True)
-        log_message('Help', j_clrs.get('Statistics Value Color'), False, False)
+        log_message(bar, j_clrs.get('Top Title Bar Color'), False, True)
+        log_message(' Help', j_clrs.get('Statistics Value Color'), False, False)
         log_message(':', j_clrs.get('Foreground Color 1'), False, True)
-        log_message('           -paths '+ f'{spacer}', j_clrs.get('Foreground Color 1'), False, False)
+        log_message('     -paths   '+ f'{spacer}'+'󰓃'+ f'{spacer}', j_clrs.get('Foreground Color 1'), False, False)
         log_message('Displays Paths', j_clrs.get('Statistics Value Color'), False, True)
-        log_message('           -colors'+ f'{spacer}', j_clrs.get('Foreground Color 1'), False, False)
+        log_message('     -colors  '+ f'{spacer}'+'󰓃'+ f'{spacer}', j_clrs.get('Foreground Color 1'), False, False)
         log_message('Displays Possible Color Settings', j_clrs.get('Statistics Value Color'), False, True)
-        log_message('           -config'+ f'{spacer}', j_clrs.get('Foreground Color 1'), False, False)
+        log_message('     -config  '+ f'{spacer}'+'󰓃' + f'{spacer}', j_clrs.get('Foreground Color 1'), False, False)
         log_message('Launch Config File', j_clrs.get('Statistics Value Color'), False, True)
-        log_message('           -help  '+ f'{spacer}', j_clrs.get('Foreground Color 1'), False, False)
+        log_message('     -help    '+ f'{spacer}'+'󰓃' + f'{spacer}', j_clrs.get('Foreground Color 1'), False, False)
         log_message('Displays Help', j_clrs.get('Statistics Value Color'), False, True)
     elif args.config:
         settingsfile = settings_f
-        cmd = "Start "+ f'{settingsfile}'
+        cmd = "Start " + f'{settingsfile}'
         os.system(cmd)
     else:
-        sort_files(file_path, pattern_lists) 
-def __main__():
-    print_help_message()
+        pass
+def main():
+    if any(arg.startswith('-')for arg in sys.argv):
+        print_help_message()
+    else:
+        sort_files(file_path, pattern_lists)
+if __name__ == '__main__':
+    main()
