@@ -9,7 +9,7 @@
 ```
 py -m pip install --upgrade slib-sorter
 ```
-> from [GitHub]([https:// ](https://github.com/nrdrch/slib-sorter.git)) 
+> from [GitHub ](https://github.com/nrdrch/slib-sorter.git)
 ```
 git clone https://github.com/nrdrch/slib-sorter.git; python3 \slib-sorter\src\slib-sorter.py
 ```
