@@ -10,9 +10,7 @@ Look at this son of a book
 > Mostly depending on the randomness of the file names youre trying to sort.
 
 
-```
-
-
+``` python 
 pattern_lists = {
     "Bass": ['bass', 'BS', 'BASS', 'Bass', 'sub', 'contrabass', 'BA', 'BS', 'Growl', 'GROWL', 'growl'],
     "BassLoops": ['bass_loop', 'bass_loops', 'Bass loops', 'D&B_Bass_Loop', 'Bass_Loop'],
@@ -65,11 +63,11 @@ pattern_lists = {
 #### [Python](https://www.python.org/downloads/), [termcolor 2.3.0 ](https://pypi.org/project/termcolor/)
 ### Installation 
 > from [PyPI](https://pypi.org/)
-```
+``` powershell
 py -m pip install --upgrade slib-sorter
 ```
 > from [GitHub ](https://github.com/nrdrch/slib-sorter.git)
-```
+``` powershell
 git clone https://github.com/nrdrch/slib-sorter.git; python3 \slib-sorter\src\slib-sorter.py
 ```
 
