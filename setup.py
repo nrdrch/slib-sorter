@@ -30,7 +30,7 @@ default_config = '''
         "Rejected Filetype Color": "red"
     },
     "Show Top Title Bar": true,
-    "Top Title Bar": ">_Sample Library Sorter v1.6.6",
+    "Top Title Bar": ">_Sample Library Sorter v1.6.7",
     "Show More Console Logs": true,
     "Show Statistics": true,
     "Console Log Seperator": "  >>--->  ",
