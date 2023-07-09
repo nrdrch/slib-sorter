@@ -1,6 +1,6 @@
 # Sample Library Sorter
 ###### *for now only meant to run on Windows10
-> This script allows you to quickly sort a massive amount of files, any kind you might find in your Sample Library as a Music Producer.
+> This script allows you to quickly sort a massive amount of files, any kind you might find in your Sample Library as a Music Producer. For now, it will match after file name & type to the best of its abilitys. If you're curious about what it is matching the files against. [Look at this son of a book](src/slib-sorter.py#L161-204)
 ##### Audio, Project Files & Plugin Presets (for now just Serum and Massive)
 ### Dependecies 
 #### [Python](https://www.python.org/downloads/), [termcolor 2.3.0 ](https://pypi.org/project/termcolor/)
@@ -9,7 +9,7 @@
 ```
 py -m pip install --upgrade slib-sorter
 ```
-> from GitHub 
+> from [GitHub]([https:// ](https://github.com/nrdrch/slib-sorter.git)) 
 ```
 git clone https://github.com/nrdrch/slib-sorter.git; python3 \slib-sorter\src\slib-sorter.py
 ```
@@ -40,7 +40,7 @@ $home\Documents\slib-sorter\settings.json
 ```
 <details>
 <summary>
-settings.json
+config preview
 </summary>
 <img src ="examples/settings.png"> 
 </details>
@@ -51,7 +51,7 @@ Slib-Sorter -config
 ```
 
 
-### Future additions
+### Future additions and improvements :bulb:  
 - [x] Make any used path easier configurable by the user.
 - [x] Fix minor issues regarding time.
 - [ ] Add further support for other Plugins and theird presets.
