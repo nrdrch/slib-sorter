@@ -52,7 +52,7 @@ def install():
             f.write(default_config)
     setuptools.setup(
         name="slib-sorter",
-        version="1.6.6",
+        version="1.6.7",
         author="Lukas H",
         author_email="fettkindasindauchoke@gmail.com",
         description="A Python package for sorting Sample Libraries",
