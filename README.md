@@ -6,7 +6,13 @@
 Look at this son of a book
 </summary>
 
+> This will yeild a pretty well sorted and catogorized Sample Library,
+> Mostly depending on the randomness of the file names youre trying to sort.
+
+
 ```
+
+
 pattern_lists = {
     "Bass": ['bass', 'BS', 'BASS', 'Bass', 'sub', 'contrabass', 'BA', 'BS', 'Growl', 'GROWL', 'growl'],
     "BassLoops": ['bass_loop', 'bass_loops', 'Bass loops', 'D&B_Bass_Loop', 'Bass_Loop'],
